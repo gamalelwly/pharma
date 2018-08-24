@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TargetVsAchievedRep" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="63a4747b-d25d-45c4-ab88-605c5cc2f36b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fromDateParam" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="toDateParam" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="repIds" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT * FROM TABLE (REPORTS_PKG.TARGET_VS_ACHIEVED_REP ($P{fromDateParam}, $P{toDateParam}, $P{repIds}))]]>
+	</queryString>
+	<field name="YEAR" class="java.math.BigDecimal"/>
+	<field name="MONTH" class="java.math.BigDecimal"/>
+	<field name="MONTH_NAME" class="java.lang.String"/>
+	<field name="REP_ID" class="java.math.BigDecimal"/>
+	<field name="REP_CODE" class="java.lang.String"/>
+	<field name="REP_NAME" class="java.lang.String"/>
+	<field name="ITEM_ID" class="java.math.BigDecimal"/>
+	<field name="ITEM_CODE" class="java.lang.String"/>
+	<field name="ITEM_NAME" class="java.lang.String"/>
+	<field name="UNIT_ID" class="java.math.BigDecimal"/>
+	<field name="UNIT_CODE" class="java.lang.String"/>
+	<field name="UNIT_NAME" class="java.lang.String"/>
+	<field name="CUST_ID" class="java.math.BigDecimal"/>
+	<field name="CUST_CODE" class="java.lang.String"/>
+	<field name="CUST_NAME" class="java.lang.String"/>
+	<field name="SECTION_ID" class="java.math.BigDecimal"/>
+	<field name="SECTION_NAME" class="java.lang.String"/>
+	<field name="TARGET_QTY" class="java.math.BigDecimal"/>
+	<field name="ACHIEVED_QTY" class="java.math.BigDecimal"/>
+	<field name="TARGET_AMT" class="java.math.BigDecimal"/>
+	<field name="ACHIEVED_AMT" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="280" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="4eccbc87-3f51-4e88-8577-525e18c06a19" mode="Transparent" x="156" y="61" width="52" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{YEAR}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="126f936c-c57b-4f63-811e-29b5f40774b8" mode="Transparent" x="104" y="61" width="52" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MONTH}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="6475545b-1e61-4b33-92ab-a3cc68eec55d" x="52" y="61" width="52" height="20"/>
+				<textElement>
+					<font fontName="Arial" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MONTH_NAME}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="4f191117-2749-4c12-b86c-f3962ea479ea" mode="Transparent" x="252" y="107" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REP_NAME}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="9fd3752d-2252-45a0-b901-69d3f0cf1c50" mode="Transparent" x="152" y="107" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ITEM_NAME}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="56d3c5b3-92fc-4a8f-bfad-e6e602f2c440" mode="Transparent" x="52" y="107" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{UNIT_NAME}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="9a8b06ef-0326-4f71-b859-1e70351782fe" mode="Transparent" x="451" y="107" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CUST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="4a8ad92c-c583-4870-baab-6d48dac27e64" mode="Transparent" x="352" y="107" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SECTION_NAME}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="9de21bef-ec90-415e-b2d9-8c4c409951a5" mode="Transparent" x="152" y="160" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TARGET_QTY}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="046c1d39-871e-432c-8c29-2b35326c1a83" mode="Transparent" x="451" y="160" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ACHIEVED_QTY}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="c074b1d6-f833-4c12-acfd-56823689a13b" mode="Transparent" x="152" y="180" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TARGET_AMT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c7bfcae8-345e-41c3-a66b-9aa1a20833c4" x="156" y="41" width="52" height="20"/>
+				<textElement/>
+				<text><![CDATA[YEAR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2d2ac8df-0294-479f-a235-5e5d72b639a6" x="104" y="41" width="52" height="20"/>
+				<textElement/>
+				<text><![CDATA[MONTH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d21501a6-bddd-4553-ad0f-0004b77bbc8d" x="52" y="41" width="52" height="20"/>
+				<textElement/>
+				<text><![CDATA[MONTH_NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6e06f1a4-3962-4ae4-a2f3-de97d2c14853" x="252" y="87" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[REP_NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bf8bcd79-3c33-438d-b178-071a40f0b696" x="152" y="87" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[ITEM_NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9298904a-b689-4a74-a5f0-4d20ac489f72" x="52" y="87" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[UNIT_NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8a736f71-8f31-4661-9c1b-f3827ef8b422" x="351" y="160" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[ACHIEVED_QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="78aba205-3296-4367-a30d-64e8b4c38ee1" x="52" y="180" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[TARGET_AMT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7ecf3ffd-92cf-4c04-975d-d9b27ce5521e" x="52" y="160" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[TARGET_QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="36ebb0dd-675a-4eb9-bdd7-05d77f1ce75c" x="352" y="87" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[SECTION_NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="15dfe62a-c122-45fb-9ee1-77845d66f88c" x="451" y="87" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[CUST_NAME]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="144560bb-13d1-4f6f-af95-fd13b843c5c5" mode="Transparent" x="451" y="180" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Identity-H" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ACHIEVED_AMT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="5a5a2a0c-f5a8-4ead-8476-cb40a74f9e47" x="351" y="180" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[ACHIEVED_AMT]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
