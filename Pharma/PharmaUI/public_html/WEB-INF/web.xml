@@ -126,5 +126,5 @@
   <mime-mapping>
     <extension>amf</extension>
     <mime-type>application/x-amf</mime-type>
-  </mime-mapping>
+  </mime-mapping> 
 </web-app>
