@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="targetTF">
+    <template-reference>
+      <document>/WEB-INF/templates/checkpointTaskflowsTemplate.xml</document>
+      <id>checkpointTaskflowsTemplate</id>
+    </template-reference>
+    <default-activity>targetEntry</default-activity>
+    <view id="targetEntry">
+      <page>/pharma/target/targetEntry.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

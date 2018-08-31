@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<library id="" name="ADF Library Dependencies" deployed="true" locked="true" xmlns="http://xmlns.oracle.com/jdeveloper/1013/manifest-libraries">
+  <description/>
+  <classpath>/D:/HmsaWorkSpace/public_html/WEB-INF/lib/BiPublisherLib.jar</classpath>
+  <classpath>/D:/HmsaWorkSpace/public_html/WEB-INF/lib/fndext.jar</classpath>
+  <classpath>/D:/HmsaWorkSpace/public_html/WEB-INF/lib/HijriConverter.jar</classpath>
+  <classpath>/D:/HmsaWorkSpace/public_html/WEB-INF/lib/itextpdf-5.4.2.jar</classpath>
+  <classpath>/D:/HmsaWorkSpace/public_html/WEB-INF/lib/log4j-1.2.15.jar</classpath>
+  <classpath>/D:/HmsaWorkSpace/public_html/WEB-INF/lib/log4j-1.2.9.jar</classpath>
+  <classpath>/D:/HmsaWorkSpace/public_html/WEB-INF/lib/log4j-1.3alpha-7.jar</classpath>
+  <classpath>/D:/HmsaWorkSpace/public_html/WEB-INF/lib/log4j-rolling-appender-20150607-2059.jar</classpath>
+  <classpath>/D:/HmsaWorkSpace/public_html/WEB-INF/lib/log4j-timestamp.jar</classpath>
+  <classpath>/D:/HmsaWorkSpace/public_html/WEB-INF/lib/poi-3.13-20150929.jar</classpath>
+  <classpath>/D:/HmsaWorkSpace/public_html/WEB-INF/lib/WeblogicUtils.jar</classpath>
+</library>
