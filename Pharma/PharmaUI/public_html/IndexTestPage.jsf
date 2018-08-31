@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="IndexTestPage.jsf" id="d1">
+        <af:form id="f1">
+            <af:pageTemplate viewId="/oracle/ui/pattern/dynamicShell/dynamicTabShell.jsf" value="#{bindings.ptb1}"
+                             id="pt1">
+                <f:facet name="copyright"/>
+                <f:facet name="about"/>
+                <f:facet name="navigation">
+                <af:panelGroupLayout id="pgl1" layout="scroll">
+                            <af:panelList id="pl01">
+                                <af:link text="Target Entry" id="l45" actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                    <f:attribute name="flowName" value="Target Entry"/>
+                                    <f:attribute name="flowLoc" value="/WEB-INF/taskflows/target/targetEntryTF.xml#targetEntryTF"/>
+                                </af:link>
+                            </af:panelList>
+                        </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="globalLinks">
+                <af:panelGroupLayout id="pgl2" layout="horizontal" valign="middle" halign="center">
+                            <af:link text="set user data" id="l3"
+                                     action="#{viewScope.pharmaLauncherBean.setUserInfoTestData}"/>
+                            <af:spacer width="30" height="10" id="s1"/>
+                            
+                            <af:spacer width="30" height="10" id="s4"/>
+                            <af:spacer width="30" height="10" id="s2"/>
+                            <af:inputText label="User Id" id="it1" value="#{userInfo.userId}" autoSubmit="true"/>
+                        </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="status"/>
+                <f:facet name="globalToolbar"/>
+                <f:facet name="globalSearch"/>
+                <f:facet name="globalTabs"/>
+                <f:facet name="welcome"/>
+                <f:facet name="innerToolbar"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

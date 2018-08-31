@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.12.24" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.hmsa.pharma.view" ClientType="Generic">
+  <pageMap>
+    <page path="/fragments/target/targetEntryEdit.jsff" usageId="com_hmsa_pharma_view_targetEntryEditPageDef"/>
+    <page path="/IndexTestPage.jsf" usageId="com_hmsa_pharma_view_IndexTestPagePageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_hmsa_pharma_view_targetEntryEditPageDef" path="fragments.target.targetEntryEditPageDef"/>
+    <page id="com_hmsa_pharma_view_IndexTestPagePageDef" path="com.hmsa.pharma.view.pageDefs.IndexTestPagePageDef"/>
+  </pageDefinitionUsages>
+</Application>
