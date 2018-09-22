@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="LkbRepsR01Assoc"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="LkbJobTitles"
+    Cardinality="1"
+    Source="true"
+    Owner="com.hmsa.pharma.model.lookups.eo.LkbJobTitles">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="LkbJobTitles"/>
+      <Attr Name="_foreignKey" Value="com.hmsa.pharma.model.lookups.eo.LkbJobTitles.LkbJobTitlesPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.hmsa.pharma.model.lookups.eo.LkbJobTitles.TitleId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="LkbReps"
+    Cardinality="-1"
+    Owner="com.hmsa.pharma.model.lookups.eo.LkbReps">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="LkbReps"/>
+      <Attr Name="_foreignKey" Value="com.hmsa.pharma.model.lookups.eo.LkbReps.LkbRepsR01"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.hmsa.pharma.model.lookups.eo.LkbReps.RepTitleId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

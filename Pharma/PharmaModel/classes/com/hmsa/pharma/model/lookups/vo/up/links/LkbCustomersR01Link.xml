@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="LkbCustomersR01Link"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  EntityAssociation="com.hmsa.pharma.model.lookups.eo.assoc.LkbCustomersR01Assoc">
+  <ViewLinkDefEnd
+    Name="LkbCustSectionsView"
+    Cardinality="1"
+    Source="true"
+    Owner="com.hmsa.pharma.model.lookups.vo.up.LkbCustSectionsView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="LkbCustSectionsView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.hmsa.pharma.model.lookups.vo.up.LkbCustSectionsView.SectionId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="LkbCustomersView"
+    Cardinality="-1"
+    Owner="com.hmsa.pharma.model.lookups.vo.up.LkbCustomersView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="LkbCustomersView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.hmsa.pharma.model.lookups.vo.up.LkbCustomersView.SectionId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

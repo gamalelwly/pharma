@@ -4,20 +4,53 @@
 <JboProject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="PharmaModel"
-  Version="12.2.1.12.24"
+  Version="12.2.1.9.14"
   SeparateXMLFiles="true"
   PackageName="com.hmsa.pharma.model">
   <DesignTime>
     <Attr Name="_DTExpressionTypeChecking" Value="true"/>
     <Attr Name="_jprName" Value="../../../../../PharmaModel.jpr"/>
     <Attr Name="_NamedConnection" Value="PharmaConn"/>
+    <Attr Name="_appModuleNames0" Value="com.hmsa.pharma.model.am.PharmaAM"/>
   </DesignTime>
-  <AppContainee
-    Name="CheckpointModel"
-    FullName="com.hmsa.checkpoint.model.CheckpointModel"
-    ObjectType="JboProject">
+  <Containee
+    Name="am"
+    PackageName="com.hmsa.pharma.model.am"
+    ObjectType="JboPackage">
     <DesignTime>
-      <Attr Name="_SourceName" Value="baseAppModelLib.jar"/>
+      <Attr Name="_AM" Value="true"/>
     </DesignTime>
-  </AppContainee>
+  </Containee>
+  <Containee
+    Name="assoc"
+    PackageName="com.hmsa.pharma.model.lookups.eo.assoc"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AS" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="eo"
+    PackageName="com.hmsa.pharma.model.lookups.eo"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_EO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="links"
+    PackageName="com.hmsa.pharma.model.lookups.vo.up.links"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VL" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="up"
+    PackageName="com.hmsa.pharma.model.lookups.vo.up"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
 </JboProject>

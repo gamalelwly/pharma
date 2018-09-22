@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="LkbSuppliersR01Assoc"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="LkbManufacturers"
+    Cardinality="1"
+    Source="true"
+    Owner="com.hmsa.pharma.model.lookups.eo.LkbManufacturers">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="LkbManufacturers"/>
+      <Attr Name="_foreignKey" Value="com.hmsa.pharma.model.lookups.eo.LkbManufacturers.LkbManufacturersPk"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.hmsa.pharma.model.lookups.eo.LkbManufacturers.MnfId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="LkbSuppliers"
+    Cardinality="-1"
+    Owner="com.hmsa.pharma.model.lookups.eo.LkbSuppliers">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="LkbSuppliers"/>
+      <Attr Name="_foreignKey" Value="com.hmsa.pharma.model.lookups.eo.LkbSuppliers.LkbSuppliersR01"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.hmsa.pharma.model.lookups.eo.LkbSuppliers.ManufactureId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

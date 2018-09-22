@@ -312,9 +312,9 @@
          <list n="libraryDefinitions">
             <hash>
                <list n="classPath">
-                  <url protocol="jar" path="file:/D:/HmsaWorkSpace/CheckpointLibrary/CustomDeclartiveComp.jar!/"/>
-                  <url protocol="jar" path="file:/D:/HmsaWorkSpace/CheckpointLibrary/baseAppUiLib.jar!/"/>
-                  <url protocol="jar" path="file:/D:/HmsaWorkSpace/CheckpointLibrary/oracle-page-templates-ext.jar!/"/>
+                  <url protocol="jar" path="file:/Z:/baseAppUiLib.jar!/"/>
+                  <url protocol="jar" path="file:/Z:/CustomDeclartiveComp.jar!/"/>
+                  <url protocol="jar" path="file:/Z:/oracle-page-templates-ext.jar!/"/>
                </list>
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="ADF Library"/>
@@ -557,6 +557,16 @@
             <value n="taglibURL" v="@oracle.home@../oracle_common/modules/oracle.adf.view/dvt-faces.jar!/META-INF/bi.taglib.xml"/>
             <value n="URI" v="http://xmlns.oracle.com/dss/adf/faces"/>
             <value n="version" v="1.1"/>
+         </hash>
+         <hash>
+            <value n="libraries" v="ADF Faces Components"/>
+            <value n="name" v="hmsaComponentsLibrary"/>
+            <value n="prefix" v="hmsa"/>
+            <value n="runInEditor" v="true"/>
+            <value n="showInPalette" v="true"/>
+            <value n="taglibURL" v="/Z:/CustomDeclartiveComp.jar!/META-INF/hmsacomponentslibrary.taglib.xml"/>
+            <value n="URI" v="/hmsaComponentsLibrary"/>
+            <value n="version" v="2.0"/>
          </hash>
       </list>
    </hash>
