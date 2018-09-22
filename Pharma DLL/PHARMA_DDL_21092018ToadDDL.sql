@@ -7,14 +7,14 @@
 --   DB Connect String           : ORCL_AT_HOME
 --   Schema                      : PHARMA
 --   Script Created by           : PHARMA
---   Script Created at           : 22/09/2018 04:11:37 Õ
+--   Script Created at           : 22/09/2018 03:22:07 Õ
 --   Notes                       : 
 --
 
 -- Object Counts: 
 --   Indexes: 26        Columns: 33         
 --   Sequences: 12 
---   Tables: 18         Columns: 155        Constraints: 56     
+--   Tables: 18         Columns: 142        Constraints: 56     
 --   Triggers: 12 
 --   Views: 1           Columns: 6          
 
@@ -752,17 +752,10 @@ CREATE TABLE CFG_TARGET
 --
 CREATE TABLE CFG_TARGET_SECTIONS
 (
-  TRG_SEC_ID    NUMBER,
-  TARGET_ID     NUMBER,
-  SECTION_ID    NUMBER,
-  TRG_PERCENT   NUMBER,
-  TRG_QUANTITY  NUMBER,
-  TRG_AMOUNT    NUMBER,
-  CREATE_DATE   DATE                            DEFAULT SYSDATE,
-  CREATED_BY    VARCHAR2(500 BYTE)              DEFAULT USER,
-  MODIFY_DATE   DATE,
-  MODIFIED_BY   VARCHAR2(500 BYTE),
-  NOTES         VARCHAR2(500 BYTE)
+  TRG_SEC_ID  NUMBER,
+  TARGET_ID   NUMBER,
+  SECTION_ID  NUMBER,
+  NOTES       VARCHAR2(500 BYTE)
 );
 
 
@@ -839,12 +832,6 @@ CREATE TABLE CFG_TARGET_CUSTOMERS
   TARGET_CUST_ID  NUMBER,
   TARGET_SEC_ID   NUMBER,
   CUSTOMER_ID     NUMBER,
-  TRG_QUANTITY    NUMBER,
-  TRG_AMOUNT      NUMBER,
-  CREATE_DATE     DATE                          DEFAULT SYSDATE,
-  CREATED_BY      VARCHAR2(500 BYTE)            DEFAULT USER,
-  MODIFY_DATE     DATE,
-  MODIFIED_BY     VARCHAR2(500 BYTE),
   NOTES           VARCHAR2(500 BYTE)
 );
 
