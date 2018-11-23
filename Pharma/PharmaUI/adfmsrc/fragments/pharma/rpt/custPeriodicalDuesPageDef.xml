@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="custPeriodicalDuesPageDef"
+                Package="fragments.pharma.rpt">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RptCustPeriodicalDuesAbove90View" RangeSize="25" DataControl="PharmaAMDataControl"
+              id="RptCustPeriodicalDuesAbove90ViewIterator"/>
+    <searchRegion Binds="RptCustPeriodicalDuesAbove90ViewIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="RptCustPeriodicalDuesAbove90ViewQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RptCustPeriodicalDuesAbove90ViewIterator" id="RptCustPeriodicalDuesAbove90View">
+      <nodeDefinition DefName="com.hmsa.pharma.model.rpt.ro.RptCustPeriodicalDuesView"
+                      Name="RptCustPeriodicalDuesAbove90View0">
+        <AttrNames>
+          <Item Value="CustomerId"/>
+          <Item Value="CustomerName"/>
+          <Item Value="DueAge"/>
+          <Item Value="DueAmount"/>
+          <Item Value="AgeFrom"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

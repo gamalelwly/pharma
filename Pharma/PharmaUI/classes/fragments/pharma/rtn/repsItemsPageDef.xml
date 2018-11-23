@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"  ControllerClass="com.hmsa.checkpoint.view.utils.CheckpointRegionController"  id="repsItemsPageDef"
+                Package="fragments.pharma.rtn">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="pagesTemplates.checkpointSearchTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="LkbRepsView" RangeSize="25" DataControl="PharmaAMDataControl" id="LkbRepsViewIterator"/>
+    <searchRegion Binds="LkbRepsViewIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="LkbRepsViewQuery"/>
+    <iterator Binds="RepsItemsROView1" RangeSize="25" DataControl="PharmaAMDataControl" id="RepsItemsROView1Iterator"/>
+    <searchRegion Binds="RepsItemsROView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="RepsItemsROView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="LkbRepsViewIterator" id="LkbRepsView">
+      <nodeDefinition DefName="com.hmsa.pharma.model.lookups.vo.up.LkbRepsView" Name="LkbRepsView0">
+        <AttrNames>
+          <Item Value="RepId"/>
+          <Item Value="RepCode"/>
+          <Item Value="RepName"/>
+          <Item Value="RepTitleId"/>
+          <Item Value="ManagerId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="RepsItemsROView1Iterator" id="RepsItemsROView1">
+      <nodeDefinition DefName="com.hmsa.pharma.model.rtn.vo.ro.RepsItemsROView" Name="RepsItemsROView10">
+        <AttrNames>
+          <Item Value="ItemName"/>
+          <Item Value="Exist"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="RepsItemsROView1Iterator" id="Exist" DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="Exist"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <methodAction id="removeAll" RequiresUpdateModel="true" Action="invokeMethod" MethodName="removeAll"
+                  IsViewObjectMethod="false" DataControl="PharmaAMDataControl"
+                  InstanceName="bindings.removeAll.dataControl.dataProvider"
+                  ReturnName="data.PharmaAMDataControl.methodResults.removeAll_removeAll_dataControl_dataProvider_removeAll_result">
+      <NamedData NDName="instanceName" NDValue="RepsItemsROView1" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="selectAll" RequiresUpdateModel="true" Action="invokeMethod" MethodName="selectAll"
+                  IsViewObjectMethod="false" DataControl="PharmaAMDataControl"
+                  InstanceName="bindings.selectAll.dataControl.dataProvider"
+                  ReturnName="data.PharmaAMDataControl.methodResults.selectAll_selectAll_dataControl_dataProvider_selectAll_result">
+      <NamedData NDName="instanceName" NDValue="RepsItemsROView1" NDType="java.lang.String"/>
+    </methodAction>
+    <action id="Commit" DataControl="PharmaAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="PharmaAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+  </bindings>
+</pageDefinition>

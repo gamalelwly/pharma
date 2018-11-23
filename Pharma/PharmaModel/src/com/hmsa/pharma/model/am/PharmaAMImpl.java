@@ -378,5 +378,13 @@ public class PharmaAMImpl extends CheckpointApplicationModuleImpl implements Pha
     public CheckpointViewObjectImpl getTrxInventoriesView() {
         return (CheckpointViewObjectImpl) findViewObject("TrxInventoriesView");
     }
+
+    /**
+     * Container's getter for RptCustPeriodicalDuesView1.
+     * @return RptCustPeriodicalDuesView1
+     */
+    public CheckpointViewObjectImpl getRptCustPeriodicalDuesAbove90View() {
+        return (CheckpointViewObjectImpl) findViewObject("RptCustPeriodicalDuesAbove90View");
+    }
 }
 

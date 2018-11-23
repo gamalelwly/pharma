@@ -119,6 +119,12 @@
                                 <f:attribute name="flowLoc"
                                              value="/WEB-INF/taskflows/pharma/trx/inventoriesTF.xml#inventoriesTF"/>
                             </af:link>
+                            <af:link text="Cust Dues Above 90" id="l1"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Customer Periodical Dues"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/rpt/custPeriodicalDuesTF.xml#custPeriodicalDuesTF"/>
+                            </af:link>
                         </af:panelList>
                     </af:panelGroupLayout>
                 </f:facet>

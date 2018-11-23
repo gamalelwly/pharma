@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CfgTargetSectionsR02Link"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  EntityAssociation="com.hmsa.pharma.model.cfg.eo.assoc.CfgTargetSectionsR02Assoc">
+  <ViewLinkDefEnd
+    Name="CfgTargetView"
+    Cardinality="1"
+    Source="true"
+    Owner="com.hmsa.pharma.model.cfg.vo.up.CfgTargetView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CfgTargetView"/>
+      <Attr Name="_accessor" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.hmsa.pharma.model.cfg.vo.up.CfgTargetView.TrxId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="CfgTargetSectionsView"
+    Cardinality="-1"
+    Owner="com.hmsa.pharma.model.cfg.vo.up.CfgTargetSectionsView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CfgTargetSectionsView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.hmsa.pharma.model.cfg.vo.up.CfgTargetSectionsView.TargetId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

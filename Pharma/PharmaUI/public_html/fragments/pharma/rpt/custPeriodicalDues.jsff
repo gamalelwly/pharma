@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelCollection id="pc1">
+    <f:facet name="menus"/>
+    <f:facet name="toolbar"/>
+    <f:facet name="statusbar"/>
+    <af:table value="#{bindings.RptCustPeriodicalDuesAbove90View.collectionModel}" var="row"
+              rows="#{bindings.RptCustPeriodicalDuesAbove90View.rangeSize}"
+              emptyText="#{bindings.RptCustPeriodicalDuesAbove90View.viewable ? 'No data to display.' : 'Access Denied.'}"
+              rowBandingInterval="0"
+              selectedRowKeys="#{bindings.RptCustPeriodicalDuesAbove90View.collectionModel.selectedRow}"
+              selectionListener="#{bindings.RptCustPeriodicalDuesAbove90View.collectionModel.makeCurrent}"
+              rowSelection="single" fetchSize="#{bindings.RptCustPeriodicalDuesAbove90View.rangeSize}"
+              filterModel="#{bindings.RptCustPeriodicalDuesAbove90ViewQuery.queryDescriptor}" filterVisible="true"
+              queryListener="#{bindings.RptCustPeriodicalDuesAbove90ViewQuery.processQuery}" varStatus="vs" id="t1">
+      <af:column sortProperty="#{bindings.RptCustPeriodicalDuesAbove90View.hints.CustomerId.name}" filterable="true"
+                 sortable="true" headerText="#{bindings.RptCustPeriodicalDuesAbove90View.hints.CustomerId.label}"
+                 id="c1">
+        <af:outputText value="#{row.CustomerId}"
+                       shortDesc="#{bindings.RptCustPeriodicalDuesAbove90View.hints.CustomerId.tooltip}" id="ot1">
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.RptCustPeriodicalDuesAbove90View.hints.CustomerId.format}"/>
+        </af:outputText>
+      </af:column>
+      <af:column sortProperty="#{bindings.RptCustPeriodicalDuesAbove90View.hints.CustomerName.name}" filterable="true"
+                 sortable="true" headerText="#{bindings.RptCustPeriodicalDuesAbove90View.hints.CustomerName.label}"
+                 id="c2" width="250">
+        <af:outputText value="#{row.CustomerName}"
+                       shortDesc="#{bindings.RptCustPeriodicalDuesAbove90View.hints.CustomerName.tooltip}" id="ot2"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.RptCustPeriodicalDuesAbove90View.hints.DueAge.name}" filterable="true"
+                 sortable="true" headerText="#{bindings.RptCustPeriodicalDuesAbove90View.hints.DueAge.label}" id="c3">
+        <af:outputText value="#{row.DueAge}"
+                       shortDesc="#{bindings.RptCustPeriodicalDuesAbove90View.hints.DueAge.tooltip}" id="ot3"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.RptCustPeriodicalDuesAbove90View.hints.DueAmount.name}" filterable="true"
+                 sortable="true" headerText="#{bindings.RptCustPeriodicalDuesAbove90View.hints.DueAmount.label}"
+                 id="c4">
+        <af:outputText value="#{row.DueAmount}"
+                       shortDesc="#{bindings.RptCustPeriodicalDuesAbove90View.hints.DueAmount.tooltip}" id="ot4">
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.RptCustPeriodicalDuesAbove90View.hints.DueAmount.format}"/>
+        </af:outputText>
+      </af:column>
+    </af:table>
+  </af:panelCollection>
+</ui:composition>
