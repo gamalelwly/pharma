@@ -23,7 +23,7 @@ public class PharmaLauncherBean {
         UserInfo userInfo = (UserInfo) JSFUtils.resolveExpression("#{userInfo}");
         String username = "هناء سليمان الخلفTEST";
         userInfo.setUserName(username);
-        userInfo.setName("admin");
+        //userInfo.setName("admin");
         userInfo.setUserId(new Number(971));
         //userInfo.setUploadPath("C:");
         // userInfo.setThemeName("mod1skin");

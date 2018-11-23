@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="LkbJobTitlesROView"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="com.hmsa.checkpoint.basic.classes.CheckpointViewRowImpl"
+  ComponentClass="com.hmsa.checkpoint.basic.classes.CheckpointViewObjectImpl"
+  DefClass="com.hmsa.checkpoint.basic.classes.CheckpointViewDefImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.hmsa.pharma.model.lookups.vo.ro.LkbJobTitlesROView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery><![CDATA[SELECT  
+    LKB_JOB_TITLES.TITLE_ID TITLE_ID,  
+    LKB_JOB_TITLES.TITLE_CODE TITLE_CODE,  
+    LKB_JOB_TITLES.TITLE_NAME TITLE_NAME  
+FROM  
+    LKB_JOB_TITLES 
+ORDER BY LKB_JOB_TITLES.TITLE_NAME]]></SQLQuery>
+  <ViewAttribute
+    Name="TitleId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="TITLE_ID"
+    Expression="TITLE_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="TitleCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="TITLE_CODE"
+    Expression="TITLE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TitleName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="200"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="TITLE_NAME"
+    Expression="TITLE_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="TitleId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.hmsa.pharma.model.bundles.PharmaModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

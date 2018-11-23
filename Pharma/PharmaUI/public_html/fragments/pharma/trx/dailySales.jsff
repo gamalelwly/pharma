@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:hmsa="/hmsaComponentsLibrary">
+    <c:set var="pharmauiBundle" value="#{adfBundle['com.hmsa.pharma.view.bundles.PharmaUIBundle']}"/>
+    <af:pageTemplate viewId="/pagesTemplates/checkpointSearchTemplate.jsf" value="#{bindings.ptb1}" id="pt1">
+        <f:facet name="Query">
+            <af:query id="qryId1" headerText="Search" disclosed="true"
+                      value="#{bindings.TrxDailySalesViewCriteriaQuery.queryDescriptor}"
+                      model="#{bindings.TrxDailySalesViewCriteriaQuery.queryModel}"
+                      queryListener="#{bindings.TrxDailySalesViewCriteriaQuery.processQuery}"
+                      queryOperationListener="#{bindings.TrxDailySalesViewCriteriaQuery.processQueryOperation}"
+                      resultComponentId="::pc1:t1" saveQueryMode="hidden" rows="1" maxColumns="2"/>
+        </f:facet>
+        <f:facet name="Result">
+            <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                    <af:toolbar id="t3">
+                        <hmsa:createInsert id="ci1"/>
+                    </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.TrxDailySalesView.collectionModel}" var="row"
+                          rows="#{bindings.TrxDailySalesView.rangeSize}"
+                          emptyText="#{bindings.TrxDailySalesView.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.TrxDailySalesView.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.TrxDailySalesView.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.TrxDailySalesView.rangeSize}"
+                          filterModel="#{bindings.TrxDailySalesViewQuery.queryDescriptor}"
+                          queryListener="#{bindings.TrxDailySalesViewQuery.processQuery}" varStatus="vs" id="t1"
+                          columnStretching="multiple" editingMode="clickToEdit" autoHeightRows="10"
+                          partialTriggers="::ci1:customCrIns :::qryId1">
+                    <af:column sortProperty="#{bindings.TrxDailySalesView.hints.TrxCode.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxDailySalesView.hints.TrxCode.label}" id="c1"
+                               width="5%" align="center">
+                        <af:inputText value="#{row.bindings.TrxCode.inputValue}"
+                                      label="#{bindings.TrxDailySalesView.hints.TrxCode.label}"
+                                      required="#{bindings.TrxDailySalesView.hints.TrxCode.mandatory}"
+                                      columns="#{bindings.TrxDailySalesView.hints.TrxCode.displayWidth}"
+                                      maximumLength="#{bindings.TrxDailySalesView.hints.TrxCode.precision}"
+                                      shortDesc="#{bindings.TrxDailySalesView.hints.TrxCode.tooltip}" id="it1"
+                                      contentStyle="text-align:center;">
+                            <f:validator binding="#{row.bindings.TrxCode.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.TrxDailySalesView.hints.TrxDate.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxDailySalesView.hints.TrxDate.label}" id="c2"
+                               width="20%" align="center">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.TrxDailySalesViewQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.TrxDate.value}"
+                                          id="id1">
+                                <af:convertDateTime pattern="#{bindings.TrxDailySalesView.hints.TrxDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:inputDate value="#{row.bindings.TrxDate.inputValue}"
+                                      label="#{bindings.TrxDailySalesView.hints.TrxDate.label}"
+                                      required="#{bindings.TrxDailySalesView.hints.TrxDate.mandatory}"
+                                      columns="#{bindings.TrxDailySalesView.hints.TrxDate.displayWidth}"
+                                      shortDesc="#{bindings.TrxDailySalesView.hints.TrxDate.tooltip}" id="id2"
+                                      contentStyle="text-align:center;">
+                            <f:validator binding="#{row.bindings.TrxDate.validator}"/>
+                            <af:convertDateTime pattern="#{bindings.TrxDailySalesView.hints.TrxDate.format}"/>
+                        </af:inputDate>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.TrxDailySalesView.hints.TrxType.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxDailySalesView.hints.TrxType.label}" id="c3"
+                               width="10%" align="center">
+                        <af:selectOneChoice value="#{row.bindings.TrxType.inputValue}"
+                                            label="#{row.bindings.TrxType.label}"
+                                            required="#{bindings.TrxDailySalesView.hints.TrxType.mandatory}"
+                                            shortDesc="#{bindings.TrxDailySalesView.hints.TrxType.tooltip}" id="soc1">
+                            <f:selectItems value="#{row.bindings.TrxType.items}" id="si1"/>
+                            <f:validator binding="#{row.bindings.TrxType.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.TrxDailySalesView.hints.CustomerId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxDailySalesView.hints.CustomerId.label}"
+                               id="c4" width="10%" align="center">
+                        <af:selectOneChoice value="#{row.bindings.CustomerId.inputValue}"
+                                            label="#{row.bindings.CustomerId.label}"
+                                            required="#{bindings.TrxDailySalesView.hints.CustomerId.mandatory}"
+                                            shortDesc="#{bindings.TrxDailySalesView.hints.CustomerId.tooltip}"
+                                            id="soc2">
+                            <f:selectItems value="#{row.bindings.CustomerId.items}" id="si2"/>
+                            <f:validator binding="#{row.bindings.CustomerId.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.TrxDailySalesView.hints.ItemId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxDailySalesView.hints.ItemId.label}" id="c5"
+                               width="10%" align="center">
+                        <af:selectOneChoice value="#{row.bindings.ItemId.inputValue}"
+                                            label="#{row.bindings.ItemId.label}"
+                                            required="#{bindings.TrxDailySalesView.hints.ItemId.mandatory}"
+                                            shortDesc="#{bindings.TrxDailySalesView.hints.ItemId.tooltip}" id="soc3">
+                            <f:selectItems value="#{row.bindings.ItemId.items}" id="si3"/>
+                            <f:validator binding="#{row.bindings.ItemId.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.TrxDailySalesView.hints.UnitId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxDailySalesView.hints.UnitId.label}" id="c6"
+                               width="10%" align="center">
+                        <af:selectOneChoice value="#{row.bindings.UnitId.inputValue}"
+                                            label="#{row.bindings.UnitId.label}"
+                                            required="#{bindings.TrxDailySalesView.hints.UnitId.mandatory}"
+                                            shortDesc="#{bindings.TrxDailySalesView.hints.UnitId.tooltip}" id="soc4">
+                            <f:selectItems value="#{row.bindings.UnitId.items}" id="si4"/>
+                            <f:validator binding="#{row.bindings.UnitId.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.TrxDailySalesView.hints.Price.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxDailySalesView.hints.Price.label}" id="c7"
+                               width="10%" align="center">
+                        <af:inputText value="#{row.bindings.Price.inputValue}"
+                                      label="#{bindings.TrxDailySalesView.hints.Price.label}"
+                                      required="#{bindings.TrxDailySalesView.hints.Price.mandatory}"
+                                      columns="#{bindings.TrxDailySalesView.hints.Price.displayWidth}"
+                                      maximumLength="#{bindings.TrxDailySalesView.hints.Price.precision}"
+                                      shortDesc="#{bindings.TrxDailySalesView.hints.Price.tooltip}" id="it2"
+                                      contentStyle="text-align:center;">
+                            <f:validator binding="#{row.bindings.Price.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TrxDailySalesView.hints.Price.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.TrxDailySalesView.hints.Quantity.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxDailySalesView.hints.Quantity.label}" id="c8"
+                               width="10%" align="center">
+                        <af:inputText value="#{row.bindings.Quantity.inputValue}"
+                                      label="#{bindings.TrxDailySalesView.hints.Quantity.label}"
+                                      required="#{bindings.TrxDailySalesView.hints.Quantity.mandatory}"
+                                      columns="#{bindings.TrxDailySalesView.hints.Quantity.displayWidth}"
+                                      maximumLength="#{bindings.TrxDailySalesView.hints.Quantity.precision}"
+                                      shortDesc="#{bindings.TrxDailySalesView.hints.Quantity.tooltip}" id="it3"
+                                      contentStyle="text-align:center;">
+                            <f:validator binding="#{row.bindings.Quantity.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TrxDailySalesView.hints.Quantity.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.TrxDailySalesView.hints.Amount.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxDailySalesView.hints.Amount.label}" id="c9"
+                               width="10%" align="center">
+                        <af:inputText value="#{row.bindings.Amount.inputValue}"
+                                      label="#{bindings.TrxDailySalesView.hints.Amount.label}"
+                                      required="#{bindings.TrxDailySalesView.hints.Amount.mandatory}"
+                                      columns="#{bindings.TrxDailySalesView.hints.Amount.displayWidth}"
+                                      maximumLength="#{bindings.TrxDailySalesView.hints.Amount.precision}"
+                                      shortDesc="#{bindings.TrxDailySalesView.hints.Amount.tooltip}" id="it4"
+                                      contentStyle="text-align:center;">
+                            <f:validator binding="#{row.bindings.Amount.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TrxDailySalesView.hints.Amount.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column id="c10" headerText="#{pharmauiBundle.DELETE}" align="center" width="5%">
+                        <hmsa:deletePopup id="dp1" commitAfterDelete="false"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+        <f:facet name="ToolbarButton">
+            <af:toolbar id="t2">
+                <hmsa:rollbackButton id="rb1"/>
+                <hmsa:commitButton id="cb1"/>
+            </af:toolbar>
+        </f:facet>
+        <f:facet name="Popup"/>
+        <f:attribute name="pageDefinitionName" value="com_hmsa_pharma_view_dailySalesPageDef"/>
+    </af:pageTemplate>
+</ui:composition>

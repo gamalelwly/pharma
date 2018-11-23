@@ -1,0 +1,12 @@
+//Groovy Scripts for com.hmsa.pharma.model.rtx.eo.TrxCustPayments
+
+package com.hmsa.pharma.model.rtx.eo
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="TrxDate")
+def TrxDate_ExpressionScript_Expression()
+{
+adf.currentDate
+}
+

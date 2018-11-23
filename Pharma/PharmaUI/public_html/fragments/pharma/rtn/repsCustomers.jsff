@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:hmsa="/hmsaComponentsLibrary">
+    <c:set var="pharmauiBundle" value="#{adfBundle['com.hmsa.pharma.view.bundles.PharmaUIBundle']}"/>
+    <af:pageTemplate viewId="/pagesTemplates/checkpointSearchTemplate.jsf" value="#{bindings.ptb1}" id="pt1">
+        <f:facet name="Query">
+            <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.LkbRepsView.collectionModel}" var="row"
+                          rows="#{bindings.LkbRepsView.rangeSize}"
+                          emptyText="#{bindings.LkbRepsView.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0" selectedRowKeys="#{bindings.LkbRepsView.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.LkbRepsView.collectionModel.makeCurrent}" rowSelection="single"
+                          fetchSize="#{bindings.LkbRepsView.rangeSize}"
+                          filterModel="#{bindings.LkbRepsViewQuery.queryDescriptor}"
+                          queryListener="#{bindings.LkbRepsViewQuery.processQuery}" varStatus="vs" id="t1"
+                          columnStretching="multiple">
+                    <af:column sortProperty="#{bindings.LkbRepsView.hints.RepId.name}" filterable="true" sortable="true"
+                               headerText="#{bindings.LkbRepsView.hints.RepId.label}" id="c1" align="center"
+                               width="10%">
+                        <af:outputText value="#{row.RepId}" shortDesc="#{bindings.LkbRepsView.hints.RepId.tooltip}"
+                                       id="ot1">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.LkbRepsView.hints.RepId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.LkbRepsView.hints.RepCode.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.LkbRepsView.hints.RepCode.label}" id="c2"
+                               align="center" width="10%">
+                        <af:outputText value="#{row.RepCode}" shortDesc="#{bindings.LkbRepsView.hints.RepCode.tooltip}"
+                                       id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.LkbRepsView.hints.RepName.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.LkbRepsView.hints.RepName.label}" id="c3"
+                               width="20%">
+                        <af:outputText value="#{row.RepName}" shortDesc="#{bindings.LkbRepsView.hints.RepName.tooltip}"
+                                       id="ot3"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.LkbRepsView.hints.RepTitleId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.LkbRepsView.hints.RepTitleId.label}" id="c4"
+                               width="20%">
+                        <af:selectOneChoice value="#{row.bindings.RepTitleId.inputValue}"
+                                            label="#{row.bindings.RepTitleId.label}"
+                                            required="#{bindings.LkbRepsView.hints.RepTitleId.mandatory}"
+                                            shortDesc="#{bindings.LkbRepsView.hints.RepTitleId.tooltip}" readOnly="true"
+                                            id="soc1">
+                            <f:selectItems value="#{row.bindings.RepTitleId.items}" id="si1"/>
+                            <f:validator binding="#{row.bindings.RepTitleId.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.LkbRepsView.hints.ManagerId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.LkbRepsView.hints.ManagerId.label}" id="c5"
+                               width="20%">
+                        <af:selectOneChoice value="#{row.bindings.ManagerId.inputValue}"
+                                            label="#{row.bindings.ManagerId.label}"
+                                            required="#{bindings.LkbRepsView.hints.ManagerId.mandatory}"
+                                            shortDesc="#{bindings.LkbRepsView.hints.ManagerId.tooltip}" readOnly="true"
+                                            id="soc2">
+                            <f:selectItems value="#{row.bindings.ManagerId.items}" id="si2"/>
+                            <f:validator binding="#{row.bindings.ManagerId.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column id="c6" headerText="#{pharmauiBundle.SELECT_ALL}" width="10%" align="center">
+                        <af:link text="#{pharmauiBundle.SELECT_ALL_CUSTOMERS}" id="l1"
+                                 actionListener="#{bindings.selectAll.execute}"/>
+                    </af:column>
+                    <af:column id="c7" headerText="#{pharmauiBundle.REMOVE_ALL}" width="10%" align="center">
+                        <af:link text="#{pharmauiBundle.REMOVE_ALL_CUSTOMER}" id="l2"
+                                 actionListener="#{bindings.removeAll.execute}"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+        <f:facet name="Result">
+            <af:panelCollection id="pc2" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.RepsCustomersROView1.collectionModel}" var="row"
+                          rows="#{bindings.RepsCustomersROView1.rangeSize}"
+                          emptyText="#{bindings.RepsCustomersROView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.RepsCustomersROView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.RepsCustomersROView1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.RepsCustomersROView1.rangeSize}"
+                          filterModel="#{bindings.RepsCustomersROView1Query.queryDescriptor}"
+                          queryListener="#{bindings.RepsCustomersROView1Query.processQuery}" varStatus="vs" id="t2"
+                          columnStretching="multiple" partialTriggers=":::pc1:t1">
+                    <af:column sortProperty="#{bindings.RepsCustomersROView1.hints.CustomerName.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.RepsCustomersROView1.hints.CustomerName.label}"
+                               id="c8" width="80%">
+                        <af:inputText value="#{row.bindings.CustomerName.inputValue}"
+                                      label="#{bindings.RepsCustomersROView1.hints.CustomerName.label}"
+                                      required="#{bindings.RepsCustomersROView1.hints.CustomerName.mandatory}"
+                                      columns="#{bindings.RepsCustomersROView1.hints.CustomerName.displayWidth}"
+                                      maximumLength="#{bindings.RepsCustomersROView1.hints.CustomerName.precision}"
+                                      shortDesc="#{bindings.RepsCustomersROView1.hints.CustomerName.tooltip}" id="it1"
+                                      readOnly="true">
+                            <f:validator binding="#{row.bindings.CustomerName.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.RepsCustomersROView1.hints.Exist.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.RepsCustomersROView1.hints.Exist.label}" id="c9"
+                               align="center" width="20%">
+                        <af:selectBooleanCheckbox value="#{row.bindings.Exist.inputValue}"
+                                                  label="#{row.bindings.Exist.label}"
+                                                  shortDesc="#{bindings.RepsCustomersROView1.hints.Exist.tooltip}"
+                                                  id="sbc1"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+        <f:facet name="ToolbarButton">
+            <af:toolbar id="t3">
+                <hmsa:commitButton id="cb1"/>
+                <hmsa:rollbackButton id="rb1"/>
+            </af:toolbar>
+        </f:facet>
+        <f:facet name="Popup"/>
+        <f:attribute name="pageDefinitionName" value="com_hmsa_pharma_view_repsCustomersPageDef"/>
+    </af:pageTemplate>
+</ui:composition>

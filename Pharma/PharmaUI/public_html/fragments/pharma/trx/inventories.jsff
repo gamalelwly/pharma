@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:hmsa="/hmsaComponentsLibrary">
+    <c:set var="pharmauiBundle" value="#{adfBundle['com.hmsa.pharma.view.bundles.PharmaUIBundle']}"/>
+    <af:pageTemplate viewId="/pagesTemplates/checkpointSearchTemplate.jsf" value="#{bindings.ptb1}" id="pt1">
+        <f:facet name="Query">
+            <af:query id="qryId1" headerText="Search" disclosed="true"
+                      value="#{bindings.TrxInventoriesViewCriteriaQuery.queryDescriptor}"
+                      model="#{bindings.TrxInventoriesViewCriteriaQuery.queryModel}"
+                      queryListener="#{bindings.TrxInventoriesViewCriteriaQuery.processQuery}"
+                      queryOperationListener="#{bindings.TrxInventoriesViewCriteriaQuery.processQueryOperation}"
+                      resultComponentId="::pc1:t1" saveQueryMode="hidden" rows="1" maxColumns="2"/>
+        </f:facet>
+        <f:facet name="Result">
+            <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                    <af:toolbar id="t3">
+                        <hmsa:createInsert id="ci1"/>
+                    </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.TrxInventoriesView.collectionModel}" var="row"
+                          rows="#{bindings.TrxInventoriesView.rangeSize}"
+                          emptyText="#{bindings.TrxInventoriesView.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.TrxInventoriesView.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.TrxInventoriesView.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.TrxInventoriesView.rangeSize}"
+                          filterModel="#{bindings.TrxInventoriesViewQuery.queryDescriptor}"
+                          queryListener="#{bindings.TrxInventoriesViewQuery.processQuery}" varStatus="vs" id="t1"
+                          autoHeightRows="10" editingMode="clickToEdit" columnStretching="multiple"
+                          partialTriggers="::ci1:customCrIns :::rb1:dc_b2 :::rb1:dc_b3 :::cb1:custSaveBtn">
+                    <af:column sortProperty="#{bindings.TrxInventoriesView.hints.TrxCode.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxInventoriesView.hints.TrxCode.label}" id="c1"
+                               width="5%" align="center">
+                        <af:inputText value="#{row.bindings.TrxCode.inputValue}"
+                                      label="#{bindings.TrxInventoriesView.hints.TrxCode.label}"
+                                      required="#{bindings.TrxInventoriesView.hints.TrxCode.mandatory}"
+                                      columns="#{bindings.TrxInventoriesView.hints.TrxCode.displayWidth}"
+                                      maximumLength="#{bindings.TrxInventoriesView.hints.TrxCode.precision}"
+                                      shortDesc="#{bindings.TrxInventoriesView.hints.TrxCode.tooltip}" id="it1"
+                                      contentStyle="text-align:center;" autoSubmit="true">
+                            <f:validator binding="#{row.bindings.TrxCode.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.TrxInventoriesView.hints.TrxDate.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxInventoriesView.hints.TrxDate.label}" id="c2"
+                               width="15%" align="center">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.TrxInventoriesViewQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.TrxDate.value}"
+                                          id="id1">
+                                <af:convertDateTime pattern="#{bindings.TrxInventoriesView.hints.TrxDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:inputDate value="#{row.bindings.TrxDate.inputValue}"
+                                      label="#{bindings.TrxInventoriesView.hints.TrxDate.label}"
+                                      required="#{bindings.TrxInventoriesView.hints.TrxDate.mandatory}"
+                                      columns="#{bindings.TrxInventoriesView.hints.TrxDate.displayWidth}"
+                                      shortDesc="#{bindings.TrxInventoriesView.hints.TrxDate.tooltip}" id="id2"
+                                      contentStyle="text-align:center;" autoSubmit="true">
+                            <f:validator binding="#{row.bindings.TrxDate.validator}"/>
+                            <af:convertDateTime pattern="#{bindings.TrxInventoriesView.hints.TrxDate.format}"/>
+                        </af:inputDate>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.TrxInventoriesView.hints.TrxType.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxInventoriesView.hints.TrxType.label}" id="c3"
+                               width="10%">
+                        <af:selectOneChoice value="#{row.bindings.TrxType.inputValue}"
+                                            label="#{row.bindings.TrxType.label}"
+                                            required="#{bindings.TrxInventoriesView.hints.TrxType.mandatory}"
+                                            shortDesc="#{bindings.TrxInventoriesView.hints.TrxType.tooltip}" id="soc1"
+                                            autoSubmit="true">
+                            <f:selectItems value="#{row.bindings.TrxType.items}" id="si1"/>
+                            <f:validator binding="#{row.bindings.TrxType.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.TrxInventoriesView.hints.ItemId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxInventoriesView.hints.ItemId.label}" id="c4"
+                               width="15%" align="center">
+                        <af:selectOneChoice value="#{row.bindings.ItemId.inputValue}"
+                                            label="#{row.bindings.ItemId.label}"
+                                            required="#{bindings.TrxInventoriesView.hints.ItemId.mandatory}"
+                                            shortDesc="#{bindings.TrxInventoriesView.hints.ItemId.tooltip}" id="soc2"
+                                            autoSubmit="true">
+                            <f:selectItems value="#{row.bindings.ItemId.items}" id="si2"/>
+                            <f:validator binding="#{row.bindings.ItemId.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.TrxInventoriesView.hints.UnitId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxInventoriesView.hints.UnitId.label}" id="c5"
+                               width="10%" align="center">
+                        <af:selectOneChoice value="#{row.bindings.UnitId.inputValue}"
+                                            label="#{row.bindings.UnitId.label}"
+                                            required="#{bindings.TrxInventoriesView.hints.UnitId.mandatory}"
+                                            shortDesc="#{bindings.TrxInventoriesView.hints.UnitId.tooltip}" id="soc3"
+                                            autoSubmit="true" partialTriggers="soc2">
+                            <f:selectItems value="#{row.bindings.UnitId.items}" id="si3"/>
+                            <f:validator binding="#{row.bindings.UnitId.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.TrxInventoriesView.hints.QuantityIn.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxInventoriesView.hints.QuantityIn.label}"
+                               id="c6" width="10%" align="center">
+                        <af:inputText value="#{row.bindings.QuantityIn.inputValue}"
+                                      label="#{bindings.TrxInventoriesView.hints.QuantityIn.label}"
+                                      required="#{bindings.TrxInventoriesView.hints.QuantityIn.mandatory}"
+                                      columns="#{bindings.TrxInventoriesView.hints.QuantityIn.displayWidth}"
+                                      maximumLength="#{bindings.TrxInventoriesView.hints.QuantityIn.precision}"
+                                      shortDesc="#{bindings.TrxInventoriesView.hints.QuantityIn.tooltip}" id="it2"
+                                      contentStyle="text-align:center;" autoSubmit="true">
+                            <f:validator binding="#{row.bindings.QuantityIn.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TrxInventoriesView.hints.QuantityIn.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.TrxInventoriesView.hints.QuantityOut.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxInventoriesView.hints.QuantityOut.label}"
+                               id="c7" width="10%" align="center">
+                        <af:inputText value="#{row.bindings.QuantityOut.inputValue}"
+                                      label="#{bindings.TrxInventoriesView.hints.QuantityOut.label}"
+                                      required="#{bindings.TrxInventoriesView.hints.QuantityOut.mandatory}"
+                                      columns="#{bindings.TrxInventoriesView.hints.QuantityOut.displayWidth}"
+                                      maximumLength="#{bindings.TrxInventoriesView.hints.QuantityOut.precision}"
+                                      shortDesc="#{bindings.TrxInventoriesView.hints.QuantityOut.tooltip}" id="it3"
+                                      contentStyle="text-align:center;" autoSubmit="true">
+                            <f:validator binding="#{row.bindings.QuantityOut.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TrxInventoriesView.hints.QuantityOut.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.TrxInventoriesView.hints.SalesId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxInventoriesView.hints.SalesId.label}" id="c8"
+                               width="10%" align="center">
+                        <af:inputText value="#{row.bindings.SalesId.inputValue}"
+                                      label="#{bindings.TrxInventoriesView.hints.SalesId.label}"
+                                      required="#{bindings.TrxInventoriesView.hints.SalesId.mandatory}"
+                                      columns="#{bindings.TrxInventoriesView.hints.SalesId.displayWidth}"
+                                      maximumLength="#{bindings.TrxInventoriesView.hints.SalesId.precision}"
+                                      shortDesc="#{bindings.TrxInventoriesView.hints.SalesId.tooltip}" id="it4"
+                                      contentStyle="text-align:center;" autoSubmit="true">
+                            <f:validator binding="#{row.bindings.SalesId.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.TrxInventoriesView.hints.SalesId.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.TrxInventoriesView.hints.InventoryNotes.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.TrxInventoriesView.hints.InventoryNotes.label}"
+                               id="c9" width="10%">
+                        <af:inputText value="#{row.bindings.InventoryNotes.inputValue}"
+                                      label="#{bindings.TrxInventoriesView.hints.InventoryNotes.label}"
+                                      required="#{bindings.TrxInventoriesView.hints.InventoryNotes.mandatory}"
+                                      columns="#{bindings.TrxInventoriesView.hints.InventoryNotes.displayWidth}"
+                                      maximumLength="#{bindings.TrxInventoriesView.hints.InventoryNotes.precision}"
+                                      shortDesc="#{bindings.TrxInventoriesView.hints.InventoryNotes.tooltip}" id="it5"
+                                      autoSubmit="true">
+                            <f:validator binding="#{row.bindings.InventoryNotes.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column id="c10" headerText="#{pharmauiBundle.DELETE}" width="5%" align="center">
+                        <hmsa:deletePopup id="dp1"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+        <f:facet name="ToolbarButton">
+            <af:toolbar id="t2">
+                <hmsa:rollbackButton id="rb1"/>
+                <hmsa:commitButton id="cb1"/>
+            </af:toolbar>
+        </f:facet>
+        <f:facet name="Popup"/>
+        <f:attribute name="pageDefinitionName" value="com_hmsa_pharma_view_inventoriesPageDef"/>
+    </af:pageTemplate>
+</ui:composition>

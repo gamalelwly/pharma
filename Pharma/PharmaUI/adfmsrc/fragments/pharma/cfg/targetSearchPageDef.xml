@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"  ControllerClass="com.hmsa.checkpoint.view.utils.CheckpointRegionController"  id="targetSearchPageDef"
+                Package="fragments.pharma.cfg">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="pagesTemplates.checkpointSearchTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="CfgTargetMasterView" RangeSize="25" DataControl="PharmaAMDataControl"
+              id="CfgTargetMasterViewIterator" ChangeEventPolicy="none"/>
+    <searchRegion Criteria="CfgTargetMasterViewCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="CfgTargetMasterViewIterator" id="CfgTargetMasterViewCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="CfgTargetMasterViewIterator" id="CfgTargetMasterView">
+      <nodeDefinition DefName="com.hmsa.pharma.model.cfg.vo.up.CfgTargetMasterView" Name="CfgTargetMasterView0">
+        <AttrNames>
+          <Item Value="TrxDate"/>
+          <Item Value="TrgYear"/>
+          <Item Value="TrgMonth"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="CfgTargetMasterViewIterator" id="CreateInsert"
+            InstanceName="PharmaAMDataControl.CfgTargetMasterView" DataControl="PharmaAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="CfgTargetMasterViewIterator" id="Delete" InstanceName="PharmaAMDataControl.CfgTargetMasterView"
+            DataControl="PharmaAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" DataControl="PharmaAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="PharmaAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+  </bindings>
+</pageDefinition>

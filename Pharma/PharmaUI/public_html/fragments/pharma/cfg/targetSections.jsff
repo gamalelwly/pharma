@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:hmsa="/hmsaComponentsLibrary"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="pharmauiBundle" value="#{adfBundle['com.hmsa.pharma.view.bundles.PharmaUIBundle']}"/>
+    <af:pageTemplate viewId="/pagesTemplates/checkpointSearchTemplate.jsf" value="#{bindings.ptb1}" id="pt1">
+        <f:facet name="Query"/>
+        <f:facet name="Result">
+            <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                    <af:toolbar id="t2">
+                        <hmsa:createInsert id="ci1"/>
+                        <hmsa:rollbackButton id="rb1" rendered="false"/>
+                        <hmsa:commitButton id="cb1" rendered="false"/>
+                    </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.CfgTargetSectionsView1.collectionModel}" var="row"
+                          rows="#{bindings.CfgTargetSectionsView1.rangeSize}"
+                          emptyText="#{bindings.CfgTargetSectionsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.CfgTargetSectionsView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.CfgTargetSectionsView1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.CfgTargetSectionsView1.rangeSize}"
+                          filterModel="#{bindings.CfgTargetSectionsView1Query.queryDescriptor}"
+                          queryListener="#{bindings.CfgTargetSectionsView1Query.processQuery}" varStatus="vs" id="t1"
+                          columnStretching="multiple"
+                          partialTriggers="::ci1:customCrIns ::rb1:dc_b2 ::rb1:dc_b3 ::cb1:custSaveBtn"
+                          editingMode="clickToEdit">
+                    <af:column sortProperty="#{bindings.CfgTargetSectionsView1.hints.SectionId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.CfgTargetSectionsView1.hints.SectionId.label}"
+                               id="c3" align="center" width="30%">
+                        <af:selectOneChoice value="#{row.bindings.SectionId.inputValue}"
+                                            label="#{row.bindings.SectionId.label}"
+                                            required="#{bindings.CfgTargetSectionsView1.hints.SectionId.mandatory}"
+                                            shortDesc="#{bindings.CfgTargetSectionsView1.hints.SectionId.tooltip}"
+                                            id="soc2" autoSubmit="true">
+                            <f:selectItems value="#{row.bindings.SectionId.items}" id="si2"/>
+                            <f:validator binding="#{row.bindings.SectionId.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.CfgTargetSectionsView1.hints.TrgPercent.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.CfgTargetSectionsView1.hints.TrgPercent.label}"
+                               id="c4" align="center" width="10%">
+                        <af:inputNumberSpinbox value="#{row.bindings.TrgPercent.inputValue}"
+                                               label="#{bindings.CfgTargetSectionsView1.hints.TrgPercent.label}"
+                                               required="#{bindings.CfgTargetSectionsView1.hints.TrgPercent.mandatory}"
+                                               columns="#{bindings.CfgTargetSectionsView1.hints.TrgPercent.displayWidth}"
+                                               shortDesc="#{bindings.CfgTargetSectionsView1.hints.TrgPercent.tooltip}"
+                                               id="it2" contentStyle="text-align:center" autoSubmit="true"
+                                               partialTriggers="it3" minimum="1" maximum="100">
+                            <f:validator binding="#{row.bindings.TrgPercent.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.CfgTargetSectionsView1.hints.TrgPercent.format}"/>
+                        </af:inputNumberSpinbox>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.CfgTargetSectionsView1.hints.TrgQuantity.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.CfgTargetSectionsView1.hints.TrgQuantity.label}"
+                               id="c5" align="center" width="10%">
+                        <af:inputText value="#{row.bindings.TrgQuantity.inputValue}"
+                                      label="#{bindings.CfgTargetSectionsView1.hints.TrgQuantity.label}"
+                                      required="#{bindings.CfgTargetSectionsView1.hints.TrgQuantity.mandatory}"
+                                      columns="#{bindings.CfgTargetSectionsView1.hints.TrgQuantity.displayWidth}"
+                                      maximumLength="#{bindings.CfgTargetSectionsView1.hints.TrgQuantity.precision}"
+                                      shortDesc="#{bindings.CfgTargetSectionsView1.hints.TrgQuantity.tooltip}" id="it3"
+                                      contentStyle="text-align:center" autoSubmit="true" partialTriggers="it2">
+                            <f:validator binding="#{row.bindings.TrgQuantity.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.CfgTargetSectionsView1.hints.TrgQuantity.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.CfgTargetSectionsView1.hints.TrgAmount.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.CfgTargetSectionsView1.hints.TrgAmount.label}"
+                               id="c6" align="center" width="10%">
+                        <af:inputText value="#{row.bindings.TrgAmount.inputValue}"
+                                      label="#{bindings.CfgTargetSectionsView1.hints.TrgAmount.label}"
+                                      required="#{bindings.CfgTargetSectionsView1.hints.TrgAmount.mandatory}"
+                                      columns="#{bindings.CfgTargetSectionsView1.hints.TrgAmount.displayWidth}"
+                                      maximumLength="#{bindings.CfgTargetSectionsView1.hints.TrgAmount.precision}"
+                                      shortDesc="#{bindings.CfgTargetSectionsView1.hints.TrgAmount.tooltip}" id="it4"
+                                      contentStyle="text-align:center" autoSubmit="true" partialTriggers="it2 it3">
+                            <f:validator binding="#{row.bindings.TrgAmount.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.CfgTargetSectionsView1.hints.TrgAmount.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.CfgTargetSectionsView1.hints.Notes.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.CfgTargetSectionsView1.hints.Notes.label}" id="c7"
+                               align="center" width="20%">
+                        <af:inputText value="#{row.bindings.Notes.inputValue}"
+                                      label="#{bindings.CfgTargetSectionsView1.hints.Notes.label}"
+                                      required="#{bindings.CfgTargetSectionsView1.hints.Notes.mandatory}"
+                                      columns="#{bindings.CfgTargetSectionsView1.hints.Notes.displayWidth}"
+                                      maximumLength="#{bindings.CfgTargetSectionsView1.hints.Notes.precision}"
+                                      shortDesc="#{bindings.CfgTargetSectionsView1.hints.Notes.tooltip}" id="it5"
+                                      autoSubmit="true">
+                            <f:validator binding="#{row.bindings.Notes.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column id="c8" headerText="#{pharmauiBundle.DIVIDE_PER_SECTIONS}" align="center" width="10%"
+                               rendered="false">
+                        <af:link id="l1" text="#{pharmauiBundle.DIVIDE_PER_CUSTOMERS}">
+                            <af:showPopupBehavior popupId=":::p1" triggerType="action"/>
+                        </af:link>
+                    </af:column>
+                    <af:column id="c1" width="5%" headerText="#{pharmauiBundle.DELETE}" align="center">
+                        <hmsa:deletePopup id="dp1" commitAfterDelete="false"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+        <f:facet name="ToolbarButton"/>
+        <f:facet name="Popup">
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+                <af:panelWindow id="pw1" title="#{pharmauiBundle.DIVIDE_PER_CUSTOMERS}" inlineStyle="width:800px;">
+                    <af:region value="#{bindings.targetCustomersTF1.regionModel}" id="r1"
+                               text="#{pharmauiBundle.DIVIDE_PER_CUSTOMERS}"/>
+                </af:panelWindow>
+            </af:popup>
+        </f:facet>
+        <f:attribute name="pageDefinitionName" value="com_hmsa_pharma_view_targetSectionsPageDef"/>
+        <f:attribute name="helpVisible" value="false"/>
+        <f:attribute name="reportsPrintBtnVisible" value="false"/>
+    </af:pageTemplate>
+</ui:composition>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CfgTargetROView"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  RowClass="com.hmsa.checkpoint.basic.classes.CheckpointViewRowImpl"
+  ComponentClass="com.hmsa.checkpoint.basic.classes.CheckpointViewObjectImpl"
+  DefClass="com.hmsa.checkpoint.basic.classes.CheckpointViewDefImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.hmsa.pharma.model.cfg.vo.ro.CfgTargetROView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery><![CDATA[SELECT CfgTarget.TRG_ID, 
+         CfgTarget.TRX_DATE, 
+         CfgTarget.TRG_YEAR, 
+         CfgTarget.TRG_MONTH 
+FROM CFG_TARGET_MASTER CfgTarget 
+ORDER BY CfgTarget.TRG_YEAR DESC, CfgTarget.TRG_MONTH]]></SQLQuery>
+  <ViewAttribute
+    Name="TrgId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="TRG_ID"
+    Expression="TRG_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="TrxDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="TRX_DATE"
+    Expression="TRX_DATE"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="TrgYear"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="TRG_YEAR"
+    Expression="TRG_YEAR"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="TrgMonth"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="TRG_MONTH"
+    Expression="TRG_MONTH"
+    SQLType="NUMERIC"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.hmsa.pharma.model.bundles.PharmaModelBundle"/>
+  </ResourceBundle>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="TrgId"/>
+  </AttrArray>
+</ViewObject>

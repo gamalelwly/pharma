@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"  ControllerClass="com.hmsa.checkpoint.view.utils.CheckpointRegionController"  id="unitsPageDef"
+                Package="fragments.pharma.lookups">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="pagesTemplates.checkpointEditTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="LkbUnitsView" RangeSize="25" DataControl="PharmaAMDataControl" id="LkbUnitsViewIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="LkbUnitsViewIterator" id="UnitCode">
+      <AttrNames>
+        <Item Value="UnitCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LkbUnitsViewIterator" id="UnitName">
+      <AttrNames>
+        <Item Value="UnitName"/>
+      </AttrNames>
+   </attributeValues>
+    <action IterBinding="LkbUnitsViewIterator" id="CreateInsert" InstanceName="PharmaAMDataControl.LkbUnitsView"
+            DataControl="PharmaAMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="LkbUnitsViewIterator" id="Delete" InstanceName="PharmaAMDataControl.LkbUnitsView"
+            DataControl="PharmaAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" DataControl="PharmaAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="PharmaAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+  </bindings>
+</pageDefinition>

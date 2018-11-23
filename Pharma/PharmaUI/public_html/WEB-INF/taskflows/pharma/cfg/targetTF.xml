@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="targetTF">
+    <template-reference>
+      <document>/WEB-INF/templates/checkpointTaskflowsTemplate.xml</document>
+      <id>checkpointTaskflowsTemplate</id>
+    </template-reference>
+    <default-activity>targetSearch</default-activity>
+    <view id="target">
+      <page>/fragments/pharma/cfg/target.jsff</page>
+    </view>
+    <view id="targetSearch">
+      <page>/fragments/pharma/cfg/targetSearch.jsff</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>targetSearch</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>edit</from-outcome>
+        <to-activity-id>target</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>target</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>targetSearch</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

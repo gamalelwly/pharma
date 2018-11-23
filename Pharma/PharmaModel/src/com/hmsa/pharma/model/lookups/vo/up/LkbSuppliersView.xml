@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LkbSuppliersView"
-  Version="12.2.1.9.14"
+  Version="12.2.1.12.24"
   InheritPersonalization="merge"
   SelectListFlags="1"
   FromListFlags="1"
@@ -12,7 +12,32 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  PageIterMode="Full">
+  PageIterMode="Full"
+  RowClass="com.hmsa.checkpoint.basic.classes.CheckpointViewRowImpl"
+  ComponentClass="com.hmsa.checkpoint.basic.classes.CheckpointViewObjectImpl"
+  DefClass="com.hmsa.checkpoint.basic.classes.CheckpointViewDefImpl">
+  <ViewAccessor
+    Name="LkbManufaturersROView1"
+    ViewObjectName="com.hmsa.pharma.model.lookups.vo.ro.LkbManufaturersROView"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ManufactureId"
+    ListVOName="LkbManufaturersROView1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ManufactureId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="MnfId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="MnfName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="LkbSuppliers"
     Entity="com.hmsa.pharma.model.lookups.eo.LkbSuppliers"/>
@@ -22,7 +47,8 @@
     PrecisionRule="true"
     EntityAttrName="SupplierId"
     EntityUsage="LkbSuppliers"
-    AliasName="SUPPLIER_ID"/>
+    AliasName="SUPPLIER_ID"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="SupplierCode"
     PrecisionRule="true"
@@ -41,7 +67,15 @@
     PrecisionRule="true"
     EntityAttrName="ManufactureId"
     EntityUsage="LkbSuppliers"
-    AliasName="MANUFACTURE_ID"/>
+    AliasName="MANUFACTURE_ID"
+    LOVName="LOV_ManufactureId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreateDate"
     PrecisionRule="true"

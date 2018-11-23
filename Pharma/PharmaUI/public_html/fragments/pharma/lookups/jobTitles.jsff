@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core"  xmlns:hmsa="/hmsaComponentsLibrary"> 
+    <af:pageTemplate viewId="/pagesTemplates/checkpointEditTemplate.jsf" value="#{bindings.ptb1}" id="pt1"
+                     partialTriggers="::pt1 dp1:dc_b2 dp1:dc_b3 cb1:custSaveBtn npflr1:cCFb1 npflr1:cCPb2 npflr1:cCNb3 npflr1:cCLb4 pfl1">
+        <f:facet name="toolbar"/>
+        <f:facet name="content">
+            <af:panelFormLayout id="pfl1">
+                <af:inputText value="#{bindings.TitleId.inputValue}" label="#{bindings.TitleId.hints.label}"
+                              required="#{bindings.TitleId.hints.mandatory}"
+                              columns="#{bindings.TitleId.hints.displayWidth}"
+                              maximumLength="#{bindings.TitleId.hints.precision}"
+                              shortDesc="#{bindings.TitleId.hints.tooltip}" id="it3" rendered="false">
+                    <f:validator binding="#{bindings.TitleId.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.TitleId.format}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.TitleCode.inputValue}" label="#{bindings.TitleCode.hints.label}"
+                              required="#{bindings.TitleCode.hints.mandatory}"
+                              columns="#{bindings.TitleCode.hints.displayWidth}"
+                              maximumLength="#{bindings.TitleCode.hints.precision}"
+                              shortDesc="#{bindings.TitleCode.hints.tooltip}" id="it1">
+                    <f:validator binding="#{bindings.TitleCode.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.TitleName.inputValue}" label="#{bindings.TitleName.hints.label}"
+                              required="#{bindings.TitleName.hints.mandatory}"
+                              columns="#{bindings.TitleName.hints.displayWidth}"
+                              maximumLength="#{bindings.TitleName.hints.precision}"
+                              shortDesc="#{bindings.TitleName.hints.tooltip}" id="it2">
+                    <f:validator binding="#{bindings.TitleName.validator}"/>
+                </af:inputText>
+            </af:panelFormLayout>
+        </f:facet>
+        <f:facet name="toolbar1"/>
+        <f:facet name="toolbar2">
+            <af:toolbar id="t1" partialTriggers="dp1:dc_b2 dp1:dc_b3 cb1:custSaveBtn">
+                <hmsa:deletePopup id="dp1" disabled="#{bindings.LkbJobTitlesViewIterator.estimatedRowCount == 0}"/>
+            </af:toolbar>
+        </f:facet>
+        <f:facet name="toolbar3">
+            <af:toolbar id="t2" rendered="false">
+                <hmsa:commitButton id="cb1" exeIterAfterCommit="true"/>
+            </af:toolbar>
+        </f:facet>
+        <f:facet name="toolbar4"/>
+        <f:facet name="toolbar5"/>
+        <f:facet name="toolbar6">
+            <hmsa:nextPrevFirstLastRow iteratorName="LkbJobTitlesViewIterator" id="npflr1"/>
+        </f:facet>
+        <f:attribute name="iterName" value="LkbJobTitlesViewIterator"/>
+        <f:attribute name="technicalDocument" value="true"/>
+        <f:attribute name="pageDefinitionName" value="com_hmsa_pharma_view_jobTitlesPageDef"/>
+    </af:pageTemplate>
+</ui:composition>

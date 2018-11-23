@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"  ControllerClass="com.hmsa.checkpoint.view.utils.CheckpointRegionController"  id="dailySalesPageDef"
+                Package="fragments.pharma.trx">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="pagesTemplates.checkpointSearchTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="TrxDailySalesView" RangeSize="25" DataControl="PharmaAMDataControl"
+              id="TrxDailySalesViewIterator" ChangeEventPolicy="none"/>
+    <searchRegion Binds="TrxDailySalesViewIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="TrxDailySalesViewQuery"/>
+    <searchRegion Criteria="TrxDailySalesViewCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="TrxDailySalesViewIterator" id="TrxDailySalesViewCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="TrxDailySalesViewIterator" id="TrxDailySalesView">
+      <nodeDefinition DefName="com.hmsa.pharma.model.rtx.vo.up.TrxDailySalesView" Name="TrxDailySalesView0">
+        <AttrNames>
+          <Item Value="TrxCode"/>
+          <Item Value="TrxDate"/>
+          <Item Value="TrxType"/>
+          <Item Value="CustomerId"/>
+          <Item Value="ItemId"/>
+          <Item Value="UnitId"/>
+          <Item Value="Price"/>
+          <Item Value="Quantity"/>
+          <Item Value="Amount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="TrxDailySalesViewIterator" id="CreateInsert"
+            InstanceName="PharmaAMDataControl.TrxDailySalesView" DataControl="PharmaAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="TrxDailySalesViewIterator" id="Delete" InstanceName="PharmaAMDataControl.TrxDailySalesView"
+            DataControl="PharmaAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" DataControl="PharmaAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="PharmaAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+  </bindings>
+</pageDefinition>

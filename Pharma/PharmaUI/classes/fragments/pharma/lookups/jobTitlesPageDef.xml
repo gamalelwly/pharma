@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"  ControllerClass="com.hmsa.checkpoint.view.utils.CheckpointRegionController"  id="jobTitlesPageDef"
+                Package="fragments.pharma.lookups">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="pagesTemplates.checkpointEditTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="LkbJobTitlesView" RangeSize="25" DataControl="PharmaAMDataControl" id="LkbJobTitlesViewIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="LkbJobTitlesViewIterator" id="TitleCode">
+      <AttrNames>
+        <Item Value="TitleCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LkbJobTitlesViewIterator" id="TitleName">
+      <AttrNames>
+        <Item Value="TitleName"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="LkbJobTitlesViewIterator" id="CreateInsert" InstanceName="PharmaAMDataControl.LkbJobTitlesView"
+            DataControl="PharmaAMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="LkbJobTitlesViewIterator" id="Delete" InstanceName="PharmaAMDataControl.LkbJobTitlesView"
+            DataControl="PharmaAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" DataControl="PharmaAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="PharmaAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="LkbJobTitlesViewIterator" id="TitleId">
+      <AttrNames>
+        <Item Value="TitleId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:hmsa="/hmsaComponentsLibrary">
+    <af:pageTemplate viewId="/pagesTemplates/checkpointEditTemplate.jsf" value="#{bindings.ptb1}" id="pt1"
+                     partialTriggers="::pt1 dp1:dc_b2 dp1:dc_b3 cb1:custSaveBtn npflr1:cCFb1 npflr1:cCPb2 npflr1:cCNb3 npflr1:cCLb4 pfl1">
+        <f:facet name="toolbar"/>
+        <f:facet name="content">
+            <af:panelFormLayout id="pfl1">
+                <af:inputText value="#{bindings.MnfCode.inputValue}" label="#{bindings.MnfCode.hints.label}"
+                              required="#{bindings.MnfCode.hints.mandatory}"
+                              columns="#{bindings.MnfCode.hints.displayWidth}"
+                              maximumLength="#{bindings.MnfCode.hints.precision}"
+                              shortDesc="#{bindings.MnfCode.hints.tooltip}" id="it1">
+                    <f:validator binding="#{bindings.MnfCode.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.MnfName.inputValue}" label="#{bindings.MnfName.hints.label}"
+                              required="#{bindings.MnfName.hints.mandatory}"
+                              columns="#{bindings.MnfName.hints.displayWidth}"
+                              maximumLength="#{bindings.MnfName.hints.precision}"
+                              shortDesc="#{bindings.MnfName.hints.tooltip}" id="it2">
+                    <f:validator binding="#{bindings.MnfName.validator}"/>
+                </af:inputText>
+            </af:panelFormLayout>
+        </f:facet>
+        <f:facet name="toolbar1"/>
+        <f:facet name="toolbar2">
+            <af:toolbar id="t1" partialTriggers="dp1:dc_b2 dp1:dc_b3 cb1:custSaveBtn">
+                <hmsa:deletePopup id="dp1" disabled="#{bindings.LkbManufacturersViewIterator.estimatedRowCount == 0}"/>
+            </af:toolbar>
+        </f:facet>
+        <f:facet name="toolbar3">
+            <af:toolbar id="t2" rendered="false">
+                <hmsa:commitButton id="cb1"/>
+            </af:toolbar>
+        </f:facet>
+        <f:facet name="toolbar4"/>
+        <f:facet name="toolbar5"/>
+        <f:facet name="toolbar6">
+            <hmsa:nextPrevFirstLastRow iteratorName="LkbManufacturersViewIterator" id="npflr1"/>
+        </f:facet>
+        <f:attribute name="pageDefinitionName" value="com_hmsa_pharma_view_manufacturersPageDef"/>
+        <f:attribute name="iterName" value="LkbManufacturersViewIterator"/>
+        <f:attribute name="deleteAllowed" value="false"/>
+        <f:attribute name="technicalDocument" value="true"/>
+    </af:pageTemplate>
+</ui:composition>

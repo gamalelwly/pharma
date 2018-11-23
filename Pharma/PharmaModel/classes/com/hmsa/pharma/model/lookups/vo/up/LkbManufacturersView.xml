@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LkbManufacturersView"
-  Version="12.2.1.9.14"
+  Version="12.2.1.12.24"
   InheritPersonalization="merge"
   SelectListFlags="1"
   FromListFlags="1"
@@ -12,7 +12,10 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  PageIterMode="Full">
+  PageIterMode="Full"
+  RowClass="com.hmsa.checkpoint.basic.classes.CheckpointViewRowImpl"
+  ComponentClass="com.hmsa.checkpoint.basic.classes.CheckpointViewObjectImpl"
+  DefClass="com.hmsa.checkpoint.basic.classes.CheckpointViewDefImpl">
   <EntityUsage
     Name="LkbManufacturers"
     Entity="com.hmsa.pharma.model.lookups.eo.LkbManufacturers"/>
@@ -28,13 +31,27 @@
     PrecisionRule="true"
     EntityAttrName="MnfCode"
     EntityUsage="LkbManufacturers"
-    AliasName="MNF_CODE"/>
+    AliasName="MNF_CODE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="MANUFACTURER_CODE"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="MnfName"
     PrecisionRule="true"
     EntityAttrName="MnfName"
     EntityUsage="LkbManufacturers"
-    AliasName="MNF_NAME"/>
+    AliasName="MNF_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="MANUFACTURER_NAME"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreateDate"
     PrecisionRule="true"
@@ -69,4 +86,8 @@
     ViewLink="com.hmsa.pharma.model.lookups.vo.up.links.LkbSuppliersR01Link"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.hmsa.pharma.model.bundles.PharmaModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

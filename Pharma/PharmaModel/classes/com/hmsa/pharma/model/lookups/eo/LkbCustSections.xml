@@ -4,24 +4,26 @@
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LkbCustSections"
-  Version="12.2.1.9.14"
+  Version="12.2.1.12.24"
   InheritPersonalization="merge"
   DBObjectType="table"
   DBObjectName="LKB_CUST_SECTIONS"
   AliasName="LkbCustSections"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  RowClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityImpl"
+  DefClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityDefImpl"
+  CollClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityCache">
   <Attribute
     Name="SectionId"
     ColumnName="SECTION_ID"
     SQLType="NUMERIC"
-    Type="oracle.jbo.domain.DBSequence"
+    Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
     TableName="LKB_CUST_SECTIONS"
     PrimaryKey="true"
-    IsUpdateable="while_insert"
-    DefaultValue="@0"
-    Domain="oracle.jbo.domain.DBSequence"
-    RetrievedOnInsert="true">
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true"
+    IsUpdateable="false">
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -36,7 +38,8 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LKB_CUST_SECTIONS">
+    TableName="LKB_CUST_SECTIONS"
+    IsNotNull="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="100"/>
     </DesignTime>
@@ -44,6 +47,8 @@
       <SchemaBasedProperties>
         <LABEL
           ResId="com.hmsa.pharma.model.lookups.eo.LkbCustSections.SectionCode_LABEL"/>
+        <DISPLAYWIDTH
+          Value="15"/>
       </SchemaBasedProperties>
     </Properties>
   </Attribute>
@@ -63,6 +68,8 @@
       <SchemaBasedProperties>
         <LABEL
           ResId="com.hmsa.pharma.model.lookups.eo.LkbCustSections.SectionName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
       </SchemaBasedProperties>
     </Properties>
   </Attribute>
@@ -145,6 +152,18 @@
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.hmsa.pharma.model.lookups.eo.LkbCustSections.SectionId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="LkbCustSectionsSectionCodeCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"SECTION_CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="LKB_CUST_SECTIONS_SECTION_CODE"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.hmsa.pharma.model.lookups.eo.LkbCustSections.SectionCode"/>
     </AttrArray>
   </Key>
   <Key

@@ -4,7 +4,7 @@
 <ViewLink
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LkbCustomersR01Link"
-  Version="12.2.1.9.14"
+  Version="12.2.1.12.24"
   InheritPersonalization="merge"
   EntityAssociation="com.hmsa.pharma.model.lookups.eo.assoc.LkbCustomersR01Assoc">
   <ViewLinkDefEnd

@@ -1,0 +1,12 @@
+//Groovy Scripts for com.hmsa.pharma.model.cfg.vo.up.CfgTargetMasterView
+
+package com.hmsa.pharma.model.cfg.vo.up
+
+import oracle.jbo.script.annotation.VariableExpression;
+
+@VariableExpression(path="bindLocale")
+def bindLocale_VariableScript_Variable()
+{
+getCurrentLocale()
+}
+

@@ -4,21 +4,27 @@
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LkbJobTitles"
-  Version="12.2.1.9.14"
+  Version="12.2.1.12.24"
   InheritPersonalization="merge"
   DBObjectType="table"
   DBObjectName="LKB_JOB_TITLES"
   AliasName="LkbJobTitles"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  RowClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityImpl"
+  DefClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityDefImpl"
+  CollClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityCache">
   <Attribute
     Name="TitleId"
-    IsNotNull="true"
     ColumnName="TITLE_ID"
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
     TableName="LKB_JOB_TITLES"
-    PrimaryKey="true"/>
+    PrimaryKey="true"
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true"
+    ChangeIndicator="true"
+    IsUpdateable="false"/>
   <Attribute
     Name="TitleCode"
     Precision="100"
@@ -30,6 +36,14 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="100"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="15"/>
+        <LABEL
+          ResId="JOB_TITLE_CODE"/>
+      </SchemaBasedProperties>
+    </Properties>
   </Attribute>
   <Attribute
     Name="TitleName"
@@ -42,6 +56,14 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="200"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="JOB_TITLE_NAME"/>
+      </SchemaBasedProperties>
+    </Properties>
   </Attribute>
   <Attribute
     Name="CreateDate"
@@ -98,4 +120,8 @@
       <Item Value="com.hmsa.pharma.model.lookups.eo.LkbJobTitles.TitleId"/>
     </AttrArray>
   </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.hmsa.pharma.model.bundles.PharmaModelBundle"/>
+  </ResourceBundle>
 </Entity>

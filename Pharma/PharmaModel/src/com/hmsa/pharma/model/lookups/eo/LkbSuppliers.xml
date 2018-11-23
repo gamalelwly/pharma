@@ -4,21 +4,26 @@
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LkbSuppliers"
-  Version="12.2.1.9.14"
+  Version="12.2.1.12.24"
   InheritPersonalization="merge"
   DBObjectType="table"
   DBObjectName="LKB_SUPPLIERS"
   AliasName="LkbSuppliers"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  RowClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityImpl"
+  DefClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityDefImpl"
+  CollClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityCache">
   <Attribute
     Name="SupplierId"
-    IsNotNull="true"
     ColumnName="SUPPLIER_ID"
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
     TableName="LKB_SUPPLIERS"
-    PrimaryKey="true"/>
+    PrimaryKey="true"
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true"
+    IsUpdateable="false"/>
   <Attribute
     Name="SupplierCode"
     Precision="100"
@@ -30,6 +35,14 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="100"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="15"/>
+        <LABEL
+          ResId="SUPPLIER_CODE"/>
+      </SchemaBasedProperties>
+    </Properties>
   </Attribute>
   <Attribute
     Name="SupplierName"
@@ -43,6 +56,14 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="200"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="SUPPLIER_NAME"/>
+      </SchemaBasedProperties>
+    </Properties>
   </Attribute>
   <Attribute
     Name="ManufactureId"
@@ -50,7 +71,14 @@
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="LKB_SUPPLIERS"/>
+    TableName="LKB_SUPPLIERS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="MANUFACTURE_ID"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
   <Attribute
     Name="CreateDate"
     ColumnName="CREATE_DATE"
@@ -127,4 +155,8 @@
       <Item Value="com.hmsa.pharma.model.lookups.eo.LkbSuppliers.ManufactureId"/>
     </AttrArray>
   </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.hmsa.pharma.model.bundles.PharmaModelBundle"/>
+  </ResourceBundle>
 </Entity>

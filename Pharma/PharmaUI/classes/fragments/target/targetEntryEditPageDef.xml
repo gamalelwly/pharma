@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="targetEntryEditPageDef"
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"  ControllerClass="com.hmsa.checkpoint.view.utils.CheckpointRegionController"  id="targetEntryEditPageDef"
                 Package="fragments.target">
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
-    <page path="pagesTemplates.checkpointEditTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <page path="pagesTemplates.checkpointSearchTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="CfgTargetView" RangeSize="25" DataControl="PharmaAMDataControl" id="CfgTargetViewIterator"
+              ChangeEventPolicy="none"/>
+    <searchRegion Binds="CfgTargetViewIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="CfgTargetViewQuery"/>
+    <taskFlow id="targetSectionsTF1" taskFlowId="/WEB-INF/taskflows/pharma/cfg/targetSectionsTF.xml#targetSectionsTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="targetSectionsTF2" taskFlowId="/WEB-INF/taskflows/pharma/cfg/targetSectionsTF.xml#targetSectionsTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="targetCustomersTF1" taskFlowId="/WEB-INF/taskflows/pharma/cfg/targetCustomersTF.xml#targetCustomersTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
   </executables>
-  <bindings/>
+  <bindings>
+    <tree IterBinding="CfgTargetViewIterator" id="CfgTargetView">
+      <nodeDefinition DefName="com.hmsa.pharma.model.cfg.vo.up.CfgTargetView" Name="CfgTargetView0">
+        <AttrNames>
+          <Item Value="ItemId"/>
+          <Item Value="UnitId"/>
+          <Item Value="RepId"/>
+          <Item Value="TrgQuantity"/>
+          <Item Value="TrgAmount"/>
+          <Item Value="TrgId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="CfgTargetViewIterator" id="CreateInsert" InstanceName="PharmaAMDataControl.CfgTargetView"
+            DataControl="PharmaAMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="CfgTargetViewIterator" id="Delete" InstanceName="PharmaAMDataControl.CfgTargetView"
+            DataControl="PharmaAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" DataControl="PharmaAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="PharmaAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+  </bindings>
 </pageDefinition>

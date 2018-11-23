@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CfgItemUnitsMinView"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  RowClass="com.hmsa.checkpoint.basic.classes.CheckpointViewRowImpl"
+  ComponentClass="com.hmsa.checkpoint.basic.classes.CheckpointViewObjectImpl"
+  DefClass="com.hmsa.checkpoint.basic.classes.CheckpointViewDefImpl"
+  PageIterMode="Full">
+  <ViewAccessor
+    Name="LkbItemsROView1"
+    ViewObjectName="com.hmsa.pharma.model.cfg.vo.ro.LkbItemsROView"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LkbUnitsROView1"
+    ViewObjectName="com.hmsa.pharma.model.cfg.vo.ro.LkbUnitsROView"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="AllItemsROView1"
+    ViewObjectName="com.hmsa.pharma.model.cfg.vo.ro.AllItemsROView"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ItemId"
+    ListVOName="AllItemsROView1"
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+    <AttrArray Name="AttrNames">
+      <Item Value="ItemId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ItemId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ItemName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_UnitId"
+    ListVOName="LkbUnitsROView1"
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+    <AttrArray Name="AttrNames">
+      <Item Value="UnitId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="UnitId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="UnitName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="CfgItemUnitsMin"
+    Entity="com.hmsa.pharma.model.cfg.eo.CfgItemUnitsMin"/>
+  <ViewAttribute
+    Name="ItemId"
+    PrecisionRule="true"
+    EntityAttrName="ItemId"
+    EntityUsage="CfgItemUnitsMin"
+    AliasName="ITEM_ID"
+    LOVName="LOV_ItemId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnitId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UnitId"
+    EntityUsage="CfgItemUnitsMin"
+    AliasName="UNIT_ID"
+    LOVName="LOV_UnitId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MinQuant"
+    PrecisionRule="true"
+    EntityAttrName="MinQuant"
+    EntityUsage="CfgItemUnitsMin"
+    AliasName="MIN_QUANT"/>
+  <ViewAttribute
+    Name="CreateDate"
+    PrecisionRule="true"
+    EntityAttrName="CreateDate"
+    EntityUsage="CfgItemUnitsMin"
+    AliasName="CREATE_DATE"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="CfgItemUnitsMin"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="ModifyDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifyDate"
+    EntityUsage="CfgItemUnitsMin"
+    AliasName="MODIFY_DATE"/>
+  <ViewAttribute
+    Name="ModifiedBy"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedBy"
+    EntityUsage="CfgItemUnitsMin"
+    AliasName="MODIFIED_BY"/>
+  <ViewAttribute
+    Name="SalesPrice"
+    PrecisionRule="true"
+    EntityAttrName="SalesPrice"
+    EntityUsage="CfgItemUnitsMin"
+    AliasName="SALES_PRICE"/>
+</ViewObject>

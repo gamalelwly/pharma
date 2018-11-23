@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:hmsa="/hmsaComponentsLibrary">
+    <c:set var="pharmauiBundle" value="#{adfBundle['com.hmsa.pharma.view.bundles.PharmaUIBundle']}"/>
+    <af:pageTemplate viewId="/pagesTemplates/checkpointSearchTemplate.jsf" value="#{bindings.ptb1}" id="pt1">
+        <f:facet name="Query"/>
+        <f:facet name="Result">
+            <af:panelCollection id="pc1">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                    <af:toolbar id="t2">
+                        <hmsa:createInsert id="ci1"/>
+                    </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.CfgItemUnitsMinView.collectionModel}" var="row"
+                          rows="#{bindings.CfgItemUnitsMinView.rangeSize}"
+                          emptyText="#{bindings.CfgItemUnitsMinView.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.CfgItemUnitsMinView.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.CfgItemUnitsMinView.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.CfgItemUnitsMinView.rangeSize}"
+                          filterModel="#{bindings.CfgItemUnitsMinViewQuery.queryDescriptor}"
+                          queryListener="#{bindings.CfgItemUnitsMinViewQuery.processQuery}" varStatus="vs" id="t1"
+                          columnStretching="multiple" editingMode="clickToEdit"
+                          partialTriggers="::ci1:customCrIns :::cb1:custSaveBtn :::rb1:dc_b2 :::rb1:dc_b3">
+                    <af:column sortProperty="#{bindings.CfgItemUnitsMinView.hints.ItemId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.CfgItemUnitsMinView.hints.ItemId.label}" id="c1"
+                               align="center" width="30%">
+                        <af:selectOneChoice value="#{row.bindings.ItemId.inputValue}"
+                                            label="#{row.bindings.ItemId.label}"
+                                            required="#{bindings.CfgItemUnitsMinView.hints.ItemId.mandatory}"
+                                            shortDesc="#{bindings.CfgItemUnitsMinView.hints.ItemId.tooltip}" id="soc1"
+                                            autoSubmit="true">
+                            <f:selectItems value="#{row.bindings.ItemId.items}" id="si1"/>
+                            <f:validator binding="#{row.bindings.ItemId.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.CfgItemUnitsMinView.hints.UnitId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.CfgItemUnitsMinView.hints.UnitId.label}" id="c2"
+                               align="center" width="30%">
+                        <af:selectOneChoice value="#{row.bindings.UnitId.inputValue}"
+                                            label="#{row.bindings.UnitId.label}"
+                                            required="#{bindings.CfgItemUnitsMinView.hints.UnitId.mandatory}"
+                                            shortDesc="#{bindings.CfgItemUnitsMinView.hints.UnitId.tooltip}" id="soc2"
+                                            partialTriggers="soc1" autoSubmit="true">
+                            <f:selectItems value="#{row.bindings.UnitId.items}" id="si2"/>
+                            <f:validator binding="#{row.bindings.UnitId.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.CfgItemUnitsMinView.hints.SalesPrice.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.CfgItemUnitsMinView.hints.SalesPrice.label}"
+                               id="c5" align="center" width="15%">
+                        <af:inputText value="#{row.bindings.SalesPrice.inputValue}"
+                                      label="#{bindings.CfgItemUnitsMinView.hints.SalesPrice.label}"
+                                      required="#{bindings.CfgItemUnitsMinView.hints.SalesPrice.mandatory}"
+                                      columns="#{bindings.CfgItemUnitsMinView.hints.SalesPrice.displayWidth}"
+                                      maximumLength="#{bindings.CfgItemUnitsMinView.hints.SalesPrice.precision}"
+                                      shortDesc="#{bindings.CfgItemUnitsMinView.hints.SalesPrice.tooltip}" id="it1"
+                                      contentStyle="text-align:center;">
+                            <f:validator binding="#{row.bindings.SalesPrice.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.CfgItemUnitsMinView.hints.SalesPrice.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.CfgItemUnitsMinView.hints.MinQuant.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.CfgItemUnitsMinView.hints.MinQuant.label}" id="c3"
+                               align="center" width="15%">
+                        <af:inputText value="#{row.bindings.MinQuant.inputValue}"
+                                      label="#{bindings.CfgItemUnitsMinView.hints.MinQuant.label}"
+                                      required="#{bindings.CfgItemUnitsMinView.hints.MinQuant.mandatory}"
+                                      columns="#{bindings.CfgItemUnitsMinView.hints.MinQuant.displayWidth}"
+                                      maximumLength="#{bindings.CfgItemUnitsMinView.hints.MinQuant.precision}"
+                                      shortDesc="#{bindings.CfgItemUnitsMinView.hints.MinQuant.tooltip}" id="it2"
+                                      contentStyle="text-align:center;">
+                            <f:validator binding="#{row.bindings.MinQuant.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.CfgItemUnitsMinView.hints.MinQuant.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column id="c4" headerText="#{pharmauiBundle.DELETE}" align="center" width="10%">
+                        <hmsa:deletePopup id="dp1" commitAfterDelete="false"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+        <f:facet name="ToolbarButton">
+            <af:toolbar id="t3">
+                <hmsa:commitButton id="cb1"/>
+                <hmsa:rollbackButton id="rb1" text=" "/>
+            </af:toolbar>
+        </f:facet>
+        <f:facet name="Popup"/>
+        <f:attribute name="pageDefinitionName" value="com_hmsa_pharma_view_cfgItemUnitsMinPageDef"/>
+    </af:pageTemplate>
+</ui:composition>

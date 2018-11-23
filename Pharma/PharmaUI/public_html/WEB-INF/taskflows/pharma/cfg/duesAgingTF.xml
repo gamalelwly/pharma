@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="duesAgingTF">
+    <template-reference>
+      <document>/WEB-INF/templates/checkpointTaskflowsTemplate.xml</document>
+      <id>checkpointTaskflowsTemplate</id>
+    </template-reference>
+    <default-activity>duesAging</default-activity>
+    <data-control-scope>
+      <isolated/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>duesAgingBean</managed-bean-name>
+      <managed-bean-class>com.hmsa.pharma.view.beans.DuesAgingBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="duesAging">
+      <page>/fragments/pharma/cfg/duesAging.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

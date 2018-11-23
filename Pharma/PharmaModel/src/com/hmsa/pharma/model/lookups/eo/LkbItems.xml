@@ -4,21 +4,26 @@
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LkbItems"
-  Version="12.2.1.9.14"
+  Version="12.2.1.12.24"
   InheritPersonalization="merge"
   DBObjectType="table"
   DBObjectName="LKB_ITEMS"
   AliasName="LkbItems"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  RowClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityImpl"
+  DefClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityDefImpl"
+  CollClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityCache">
   <Attribute
     Name="ItemId"
-    IsNotNull="true"
     ColumnName="ITEM_ID"
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
     TableName="LKB_ITEMS"
-    PrimaryKey="true"/>
+    PrimaryKey="true"
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true"
+    IsUpdateable="false"/>
   <Attribute
     Name="ItemCode"
     Precision="100"
@@ -26,10 +31,19 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LKB_ITEMS">
+    TableName="LKB_ITEMS"
+    IsNotNull="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="100"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="15"/>
+        <LABEL
+          ResId="com.hmsa.pharma.model.lookups.eo.LkbItems.ItemCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
   </Attribute>
   <Attribute
     Name="ItemName"
@@ -43,6 +57,14 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="200"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="com.hmsa.pharma.model.lookups.eo.LkbItems.ItemName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
   </Attribute>
   <Attribute
     Name="ManufactureId"
@@ -50,7 +72,14 @@
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="LKB_ITEMS"/>
+    TableName="LKB_ITEMS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.hmsa.pharma.model.lookups.eo.LkbItems.ManufactureId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
   <Attribute
     Name="CreateDate"
     ColumnName="CREATE_DATE"
@@ -97,6 +126,18 @@
     Type="oracle.jbo.server.EntityImpl"
     IsUpdateable="true"/>
   <Key
+    Name="LkbItemsItemCodeCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"ITEM_CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="LKB_ITEMS_ITEM_CODE_CHECK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.hmsa.pharma.model.lookups.eo.LkbItems.ItemCode"/>
+    </AttrArray>
+  </Key>
+  <Key
     Name="LkbItemsPk"
     PrimaryKey="true">
     <DesignTime>
@@ -127,4 +168,8 @@
       <Item Value="com.hmsa.pharma.model.lookups.eo.LkbItems.ManufactureId"/>
     </AttrArray>
   </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.hmsa.pharma.model.bundles.PharmaModelBundle"/>
+  </ResourceBundle>
 </Entity>

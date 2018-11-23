@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CfgItemUnitsMin"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="CFG_ITEM_UNITS_MIN"
+  AliasName="CfgItemUnitsMin"
+  BindingStyle="OracleName"
+  RowClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityImpl"
+  DefClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityDefImpl"
+  CollClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityCache">
+  <Attribute
+    Name="ItemId"
+    ColumnName="ITEM_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CFG_ITEM_UNITS_MIN"
+    PrimaryKey="true">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.hmsa.pharma.model.cfg.eo.CfgItemUnitsMin.ItemId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="UnitId"
+    IsNotNull="true"
+    ColumnName="UNIT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CFG_ITEM_UNITS_MIN"
+    PrimaryKey="true">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.hmsa.pharma.model.cfg.eo.CfgItemUnitsMin.UnitId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="MinQuant"
+    ColumnName="MIN_QUANT"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CFG_ITEM_UNITS_MIN">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="15"/>
+        <LABEL
+          ResId="com.hmsa.pharma.model.cfg.eo.CfgItemUnitsMin.MinQuant_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="CreateDate"
+    ColumnName="CREATE_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="CFG_ITEM_UNITS_MIN"/>
+  <Attribute
+    Name="CreatedBy"
+    Precision="500"
+    ColumnName="CREATED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CFG_ITEM_UNITS_MIN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifyDate"
+    ColumnName="MODIFY_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="CFG_ITEM_UNITS_MIN"/>
+  <Attribute
+    Name="ModifiedBy"
+    Precision="500"
+    ColumnName="MODIFIED_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CFG_ITEM_UNITS_MIN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SalesPrice"
+    ColumnName="SALES_PRICE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="CFG_ITEM_UNITS_MIN">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.hmsa.pharma.model.cfg.eo.CfgItemUnitsMin.SalesPrice_LABEL"/>
+        <DISPLAYWIDTH
+          Value="15"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Key
+    Name="CfgItemUnitsMinPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CFG_ITEM_UNITS_MIN_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.hmsa.pharma.model.cfg.eo.CfgItemUnitsMin.ItemId"/>
+      <Item Value="com.hmsa.pharma.model.cfg.eo.CfgItemUnitsMin.UnitId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CfgItemUnitsMinR01">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="LKB_ITEMS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CFG_ITEM_UNITS_MIN_R01"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.hmsa.pharma.model.cfg.eo.CfgItemUnitsMin.ItemId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="CfgItemUnitsMinR02">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="LKB_PROD_UNITS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CFG_ITEM_UNITS_MIN_R02"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.hmsa.pharma.model.cfg.eo.CfgItemUnitsMin.UnitId"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.hmsa.pharma.model.bundles.PharmaModelBundle"/>
+  </ResourceBundle>
+</Entity>

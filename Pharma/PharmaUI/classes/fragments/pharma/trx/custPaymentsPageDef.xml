@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"  ControllerClass="com.hmsa.checkpoint.view.utils.CheckpointRegionController"  id="custPaymentsPageDef"
+                Package="fragments.pharma.trx">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="pagesTemplates.checkpointSearchTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="TrxCustPaymentsView" RangeSize="25" DataControl="PharmaAMDataControl"
+              id="TrxCustPaymentsViewIterator"/>
+    <searchRegion Criteria="TrxCustPaymentsViewCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="TrxCustPaymentsViewIterator" id="TrxCustPaymentsViewCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="TrxCustPaymentsViewIterator" id="TrxCustPaymentsView">
+      <nodeDefinition DefName="com.hmsa.pharma.model.rtx.vo.up.TrxCustPaymentsView" Name="TrxCustPaymentsView0">
+        <AttrNames>
+          <Item Value="TrxDate"/>
+          <Item Value="PaymentType"/>
+          <Item Value="PaymantDescription"/>
+          <Item Value="CustomerId"/>
+          <Item Value="PaymentAmount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="TrxCustPaymentsViewIterator" id="CreateInsert"
+            InstanceName="PharmaAMDataControl.TrxCustPaymentsView" DataControl="PharmaAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="TrxCustPaymentsViewIterator" id="Delete" InstanceName="PharmaAMDataControl.TrxCustPaymentsView"
+            DataControl="PharmaAMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" DataControl="PharmaAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="PharmaAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+  </bindings>
+</pageDefinition>

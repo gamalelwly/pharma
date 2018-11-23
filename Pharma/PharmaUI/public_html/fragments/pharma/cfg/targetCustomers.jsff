@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:hmsa="/hmsaComponentsLibrary"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="pharmauiBundle" value="#{adfBundle['com.hmsa.pharma.view.bundles.PharmaUIBundle']}"/>
+    <af:pageTemplate viewId="/pagesTemplates/checkpointSearchTemplate.jsf" value="#{bindings.ptb1}" id="pt1">
+        <f:facet name="Query"/>
+        <f:facet name="Result">
+            <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                    <af:toolbar id="t2">
+                        <hmsa:createInsert id="ci1"/>
+                        <hmsa:rollbackButton id="rb1" rendered="false"/>
+                        <hmsa:commitButton id="cb1" rendered="false"/>
+                    </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.CfgTargetCustomersView2.collectionModel}" var="row"
+                          rows="#{bindings.CfgTargetCustomersView2.rangeSize}"
+                          emptyText="#{bindings.CfgTargetCustomersView2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.CfgTargetCustomersView2.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.CfgTargetCustomersView2.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.CfgTargetCustomersView2.rangeSize}"
+                          filterModel="#{bindings.CfgTargetCustomersView2Query.queryDescriptor}"
+                          queryListener="#{bindings.CfgTargetCustomersView2Query.processQuery}" varStatus="vs" id="t1"
+                          columnStretching="multiple"
+                          partialTriggers="::ci1:customCrIns ::rb1:dc_b2 ::rb1:dc_b3 ::cb1:custSaveBtn"
+                          editingMode="clickToEdit">
+                    <af:column sortProperty="#{bindings.CfgTargetCustomersView2.hints.TargetSecId.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.CfgTargetCustomersView2.hints.TargetSecId.label}" id="c1"
+                               align="center" width="10%" rendered="false">
+                        <af:selectOneChoice value="#{row.bindings.TargetSecId.inputValue}"
+                                            label="#{row.bindings.TargetSecId.label}"
+                                            required="#{bindings.CfgTargetCustomersView2.hints.TargetSecId.mandatory}"
+                                            shortDesc="#{bindings.CfgTargetCustomersView2.hints.TargetSecId.tooltip}"
+                                            id="soc1" autoSubmit="true">
+                            <f:selectItems value="#{row.bindings.TargetSecId.items}" id="si1"/>
+                            <f:validator binding="#{row.bindings.TargetSecId.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.CfgTargetCustomersView2.hints.CustomerId.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.CfgTargetCustomersView2.hints.CustomerId.label}"
+                               id="c2" align="center" width="30%">
+                        <af:selectOneChoice value="#{row.bindings.CustomerId.inputValue}"
+                                            label="#{row.bindings.CustomerId.label}"
+                                            required="#{bindings.CfgTargetCustomersView2.hints.CustomerId.mandatory}"
+                                            shortDesc="#{bindings.CfgTargetCustomersView2.hints.CustomerId.tooltip}"
+                                            id="soc2" autoSubmit="true">
+                            <f:selectItems value="#{row.bindings.CustomerId.items}" id="si2"/>
+                            <f:validator binding="#{row.bindings.CustomerId.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.CfgTargetCustomersView2.hints.TrgQuantity.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.CfgTargetCustomersView2.hints.TrgQuantity.label}" id="c3"
+                               align="center" width="10%">
+                        <af:inputText value="#{row.bindings.TrgQuantity.inputValue}"
+                                      label="#{bindings.CfgTargetCustomersView2.hints.TrgQuantity.label}"
+                                      required="#{bindings.CfgTargetCustomersView2.hints.TrgQuantity.mandatory}"
+                                      columns="#{bindings.CfgTargetCustomersView2.hints.TrgQuantity.displayWidth}"
+                                      maximumLength="#{bindings.CfgTargetCustomersView2.hints.TrgQuantity.precision}"
+                                      shortDesc="#{bindings.CfgTargetCustomersView2.hints.TrgQuantity.tooltip}" id="it1"
+                                      contentStyle="text-align:center" autoSubmit="true">
+                            <f:validator binding="#{row.bindings.TrgQuantity.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.CfgTargetCustomersView2.hints.TrgQuantity.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.CfgTargetCustomersView2.hints.TrgAmount.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.CfgTargetCustomersView2.hints.TrgAmount.label}"
+                               id="c4" align="center" width="10%">
+                        <af:inputText value="#{row.bindings.TrgAmount.inputValue}"
+                                      label="#{bindings.CfgTargetCustomersView2.hints.TrgAmount.label}"
+                                      required="#{bindings.CfgTargetCustomersView2.hints.TrgAmount.mandatory}"
+                                      columns="#{bindings.CfgTargetCustomersView2.hints.TrgAmount.displayWidth}"
+                                      maximumLength="#{bindings.CfgTargetCustomersView2.hints.TrgAmount.precision}"
+                                      shortDesc="#{bindings.CfgTargetCustomersView2.hints.TrgAmount.tooltip}" id="it2"
+                                      contentStyle="text-align:center" autoSubmit="true" partialTriggers="it1">
+                            <f:validator binding="#{row.bindings.TrgAmount.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.CfgTargetCustomersView2.hints.TrgAmount.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.CfgTargetCustomersView2.hints.Notes.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.CfgTargetCustomersView2.hints.Notes.label}" id="c5"
+                               align="center" width="20%">
+                        <af:inputText value="#{row.bindings.Notes.inputValue}"
+                                      label="#{bindings.CfgTargetCustomersView2.hints.Notes.label}"
+                                      required="#{bindings.CfgTargetCustomersView2.hints.Notes.mandatory}"
+                                      columns="#{bindings.CfgTargetCustomersView2.hints.Notes.displayWidth}"
+                                      maximumLength="#{bindings.CfgTargetCustomersView2.hints.Notes.precision}"
+                                      shortDesc="#{bindings.CfgTargetCustomersView2.hints.Notes.tooltip}" id="it3"
+                                      autoSubmit="true">
+                            <f:validator binding="#{row.bindings.Notes.validator}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column id="c6" headerText="#{pharmauiBundle.DELETE}" align="center" width="5%">
+                        <hmsa:deletePopup id="dp1" commitAfterDelete="false"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+        <f:facet name="ToolbarButton"/>
+        <f:facet name="Popup"/>
+        <f:attribute name="pageDefinitionName" value="com_hmsa_pharma_view_targetCustomersPageDef"/>
+        <f:attribute name="helpVisible" value="false"/>
+        <f:attribute name="reportsPrintBtnVisible" value="false"/>
+    </af:pageTemplate>
+</ui:composition>

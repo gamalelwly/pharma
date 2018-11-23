@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="repsCustomersTF">
+    <template-reference>
+      <document>/WEB-INF/templates/checkpointTaskflowsTemplate.xml</document>
+      <id>checkpointTaskflowsTemplate</id>
+    </template-reference>
+    <default-activity>repsCustomers</default-activity>
+    <view id="repsCustomers">
+      <page>/fragments/pharma/rtn/repsCustomers.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

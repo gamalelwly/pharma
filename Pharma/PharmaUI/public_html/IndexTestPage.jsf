@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html>
-<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich" locale="en">
     <af:document title="IndexTestPage.jsf" id="d1">
         <af:form id="f1">
             <af:pageTemplate viewId="/oracle/ui/pattern/dynamicShell/dynamicTabShell.jsf" value="#{bindings.ptb1}"
@@ -8,25 +8,129 @@
                 <f:facet name="copyright"/>
                 <f:facet name="about"/>
                 <f:facet name="navigation">
-                <af:panelGroupLayout id="pgl1" layout="scroll">
-                            <af:panelList id="pl01">
-                                <af:link text="Target Entry" id="l45" actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
-                                    <f:attribute name="flowName" value="Target Entry"/>
-                                    <f:attribute name="flowLoc" value="/WEB-INF/taskflows/target/targetEntryTF.xml#targetEntryTF"/>
-                                </af:link>
-                            </af:panelList>
-                        </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl1" layout="scroll">
+                        <af:panelList id="pl01">
+                            <af:link text="Customers Sections Data" id="CustomersSectionsData"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Customers Sections Data"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/lookups/custSectionsTF.xml#custSectionsTF"/>
+                            </af:link>
+                            <af:link text="Customers Data" id="CustomersData"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Customers Data"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/lookups/customersTF.xml#customersTF"/>
+                            </af:link>
+                            <af:link text="Manufacturers Data" id="ManufacturersData"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Manufacturers Data"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/lookups/manufacturersTF.xml#manufacturersTF"/>
+                            </af:link>
+                            <af:link text="Items Data" id="ItemsData"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Items Data"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/lookups/itemsTF.xml#itemsTF"/>
+                            </af:link>
+                            <af:link text="Jobs Data" id="JobsData"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Jobs Data"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/lookups/jobTitlesTF.xml#jobTitlesTF"/>
+                            </af:link>
+                            <af:link text="Reps Data" id="RepsData"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Reps Data"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/lookups/repsTF.xml#repsTF"/>
+                            </af:link>
+                            <af:link text="Units Data" id="UnitsData"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Units Data"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/lookups/unitsTF.xml#unitsTF"/>
+                            </af:link>
+                            <af:link text="Suppliers Data" id="SuppliersData"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Suppliers Data"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/lookups/suppliersTF.xml#suppliersTF"/>
+                            </af:link>
+                            <af:link text="Items Units Min" id="ItemsUnitsMin"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Items Units Min"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/cfg/itemUnitsMinTF.xml#itemUnitsMinTF"/>
+                            </af:link>
+                            <af:link text="Dues Aging" id="DuesAging"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Dues Aging"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/cfg/duesAgingTF.xml#duesAgingTF"/>
+                            </af:link>
+                            <af:link text="Target" id="Target"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Target"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/cfg/targetTF.xml#targetTF"/>
+                            </af:link>
+                            <af:link text="Items Suppliers" id="ItemsSuppliers"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Items Suppliers"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/rtn/itemsSuppliersTF.xml#itemsSuppliersTF"/>
+                            </af:link>
+                            <af:link text="Reps Customers" id="RepsCustomers"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Reps Customers"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/rtn/repsCustomersTF.xml#repsCustomersTF"/>
+                            </af:link>
+                            <af:link text="Reps Items" id="RepsItems"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Reps Items"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/rtn/repsItemsTF.xml#repsItemsTF"/>
+                            </af:link>
+                            <af:link text="Target Customers" id="TargetCustomers"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}"
+                                     rendered="false">
+                                <f:attribute name="flowName" value="Target Customers"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/cfg/targetCustomersTF.xml#targetCustomersTF"/>
+                            </af:link>
+                            <af:link text="Customers Payments" id="CustomersPayments"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Customers Payments"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/trx/custPaymentsTF.xml#custPaymentsTF"/>
+                            </af:link>
+                            <af:link text="Daily Sales" id="DailySales"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Daily Sales"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/trx/dailySalesTF.xml#dailySalesTF"/>
+                            </af:link>
+                            <af:link text="Inventories" id="Inventories"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Inventories"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/trx/inventoriesTF.xml#inventoriesTF"/>
+                            </af:link>
+                        </af:panelList>
+                    </af:panelGroupLayout>
                 </f:facet>
                 <f:facet name="globalLinks">
-                <af:panelGroupLayout id="pgl2" layout="horizontal" valign="middle" halign="center">
-                            <af:link text="set user data" id="l3"
-                                     action="#{viewScope.pharmaLauncherBean.setUserInfoTestData}"/>
-                            <af:spacer width="30" height="10" id="s1"/>
-                            
-                            <af:spacer width="30" height="10" id="s4"/>
-                            <af:spacer width="30" height="10" id="s2"/>
-                            <af:inputText label="User Id" id="it1" value="#{userInfo.userId}" autoSubmit="true"/>
-                        </af:panelGroupLayout>
+                    <af:panelGroupLayout id="pgl2" layout="horizontal" valign="middle" halign="center">
+                        <af:link text="set user data  #{attrs.backAction}" id="l3"
+                                 action="#{viewScope.pharmaLauncherBean.setUserInfoTestData}"/>
+                        <af:spacer width="30" height="10" id="s1"/>
+                        <af:spacer width="30" height="10" id="s4"/>
+                        <af:spacer width="30" height="10" id="s2"/>
+                        <af:inputText label="User Id" id="it1" value="#{userInfo.userId}" autoSubmit="true"/>
+                    </af:panelGroupLayout>
                 </f:facet>
                 <f:facet name="status"/>
                 <f:facet name="globalToolbar"/>

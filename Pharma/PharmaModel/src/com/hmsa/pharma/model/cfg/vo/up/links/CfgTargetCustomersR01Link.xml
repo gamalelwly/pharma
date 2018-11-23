@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CfgTargetCustomersR01Link"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  EntityAssociation="com.hmsa.pharma.model.cfg.eo.assoc.CfgTargetCustomersR01Assoc">
+  <ViewLinkDefEnd
+    Name="CfgTargetSectionsView"
+    Cardinality="1"
+    Source="true"
+    Owner="com.hmsa.pharma.model.cfg.vo.up.CfgTargetSectionsView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CfgTargetSectionsView"/>
+      <Attr Name="_accessor" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.hmsa.pharma.model.cfg.vo.up.CfgTargetSectionsView.TrgSecId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="CfgTargetCustomersView"
+    Cardinality="-1"
+    Owner="com.hmsa.pharma.model.cfg.vo.up.CfgTargetCustomersView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="CfgTargetCustomersView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.hmsa.pharma.model.cfg.vo.up.CfgTargetCustomersView.TargetSecId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

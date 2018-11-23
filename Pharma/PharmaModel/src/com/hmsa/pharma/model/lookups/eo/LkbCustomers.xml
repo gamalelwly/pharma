@@ -4,24 +4,26 @@
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LkbCustomers"
-  Version="12.2.1.9.14"
+  Version="12.2.1.12.24"
   InheritPersonalization="merge"
   DBObjectType="table"
   DBObjectName="LKB_CUSTOMERS"
   AliasName="LkbCustomers"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  RowClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityImpl"
+  DefClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityDefImpl"
+  CollClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityCache">
   <Attribute
     Name="CustomerId"
     ColumnName="CUSTOMER_ID"
     SQLType="NUMERIC"
-    Type="oracle.jbo.domain.DBSequence"
+    Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
     TableName="LKB_CUSTOMERS"
     PrimaryKey="true"
-    IsUpdateable="while_insert"
-    DefaultValue="@0"
-    Domain="oracle.jbo.domain.DBSequence"
-    RetrievedOnInsert="true">
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true"
+    IsUpdateable="false">
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -36,7 +38,8 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LKB_CUSTOMERS">
+    TableName="LKB_CUSTOMERS"
+    IsNotNull="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="100"/>
     </DesignTime>
@@ -44,6 +47,8 @@
       <SchemaBasedProperties>
         <LABEL
           ResId="com.hmsa.pharma.model.lookups.eo.LkbCustomers.CustomerCode_LABEL"/>
+        <DISPLAYWIDTH
+          Value="15"/>
       </SchemaBasedProperties>
     </Properties>
   </Attribute>
@@ -63,6 +68,8 @@
       <SchemaBasedProperties>
         <LABEL
           ResId="com.hmsa.pharma.model.lookups.eo.LkbCustomers.CustomerName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
       </SchemaBasedProperties>
     </Properties>
   </Attribute>
@@ -125,6 +132,18 @@
     AssociationOtherEnd="com.hmsa.pharma.model.lookups.eo.assoc.LkbCustomersR01Assoc.LkbCustomers"
     Type="oracle.jbo.server.EntityImpl"
     IsUpdateable="true"/>
+  <Key
+    Name="LkbCustomersCustomerCodeCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_checkCondition" Value='"CUSTOMER_CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+      <Attr Name="_DBObjectName" Value="LKB_CUSTOMERS_CUSTOMER_CODE_CH"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.hmsa.pharma.model.lookups.eo.LkbCustomers.CustomerCode"/>
+    </AttrArray>
+  </Key>
   <Key
     Name="LkbCustomersPk"
     PrimaryKey="true">

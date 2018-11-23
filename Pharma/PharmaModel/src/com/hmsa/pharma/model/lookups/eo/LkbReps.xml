@@ -4,21 +4,33 @@
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LkbReps"
-  Version="12.2.1.9.14"
+  Version="12.2.1.12.24"
   InheritPersonalization="merge"
   DBObjectType="table"
   DBObjectName="LKB_REPS"
   AliasName="LkbReps"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  RowClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityImpl"
+  DefClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityDefImpl"
+  CollClass="com.hmsa.checkpoint.basic.classes.CheckpointEntityCache">
   <Attribute
     Name="RepId"
-    IsNotNull="true"
     ColumnName="REP_ID"
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
     TableName="LKB_REPS"
-    PrimaryKey="true"/>
+    PrimaryKey="true"
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true"
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.hmsa.pharma.model.lookups.eo.LkbReps.RepId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
   <Attribute
     Name="RepCode"
     Precision="500"
@@ -30,6 +42,14 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="500"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="15"/>
+        <LABEL
+          ResId="EMPLOYEE_CODE"/>
+      </SchemaBasedProperties>
+    </Properties>
   </Attribute>
   <Attribute
     Name="RepName"
@@ -43,6 +63,14 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="2000"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="EMPLOYEE_NAME"/>
+      </SchemaBasedProperties>
+    </Properties>
   </Attribute>
   <Attribute
     Name="RepTitleId"
@@ -50,14 +78,28 @@
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="LKB_REPS"/>
+    TableName="LKB_REPS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="JOB_TITLE"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
   <Attribute
     Name="ManagerId"
     ColumnName="MANAGER_ID"
     SQLType="NUMERIC"
     Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
-    TableName="LKB_REPS"/>
+    TableName="LKB_REPS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="MANAGER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
   <Attribute
     Name="CreateDate"
     ColumnName="CREATE_DATE"
@@ -112,10 +154,10 @@
     IsUpdateable="true"/>
   <AccessorAttribute
     Name="LkbJobTitles"
-    Association="com.hmsa.pharma.model.lookups.eo.LkbRepsR01Assoc"
-    AssociationEnd="com.hmsa.pharma.model.lookups.eo.LkbRepsR01Assoc.LkbJobTitles"
-    AssociationOtherEnd="com.hmsa.pharma.model.lookups.eo.LkbRepsR01Assoc.LkbReps"
-    Type="oracle.jbo.server.EntityImpl"
+    Association="com.hmsa.pharma.model.lookups.eo.assoc.LkbRepsR01Assoc"
+    AssociationEnd="com.hmsa.pharma.model.lookups.eo.assoc.LkbRepsR01Assoc.LkbJobTitles"
+    AssociationOtherEnd="com.hmsa.pharma.model.lookups.eo.assoc.LkbRepsR01Assoc.LkbReps"
+    Type="com.hmsa.checkpoint.basic.classes.CheckpointEntityImpl"
     IsUpdateable="true"/>
   <Key
     Name="LkbRepsPk"
@@ -159,4 +201,8 @@
       <Item Value="com.hmsa.pharma.model.lookups.eo.LkbReps.ManagerId"/>
     </AttrArray>
   </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.hmsa.pharma.model.bundles.PharmaModelBundle"/>
+  </ResourceBundle>
 </Entity>

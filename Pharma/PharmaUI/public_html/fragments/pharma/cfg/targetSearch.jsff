@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:hmsa="/hmsaComponentsLibrary">
+    <c:set var="pharmauiBundle" value="#{adfBundle['com.hmsa.pharma.view.bundles.PharmaUIBundle']}"/>
+    <af:pageTemplate viewId="/pagesTemplates/checkpointSearchTemplate.jsf" value="#{bindings.ptb1}" id="pt1">
+        <f:facet name="Query">
+            <af:query id="qryId1" headerText="Search" disclosed="true"
+                      value="#{bindings.CfgTargetMasterViewCriteriaQuery.queryDescriptor}"
+                      model="#{bindings.CfgTargetMasterViewCriteriaQuery.queryModel}"
+                      queryListener="#{bindings.CfgTargetMasterViewCriteriaQuery.processQuery}"
+                      queryOperationListener="#{bindings.CfgTargetMasterViewCriteriaQuery.processQueryOperation}"
+                      resultComponentId="::pc1:t1" saveQueryMode="hidden" rows="1"
+                      maxColumns="2"/>
+        </f:facet>
+        <f:facet name="Result">
+            <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                    <af:toolbar id="t2">
+                        <hmsa:createInsert id="ci1"/>
+                        <hmsa:rollbackButton id="rb1"/>
+                        <hmsa:commitButton id="cb1"/>
+                    </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.CfgTargetMasterView.collectionModel}" var="row"
+                          rows="#{bindings.CfgTargetMasterView.rangeSize}"
+                          emptyText="#{bindings.CfgTargetMasterView.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.CfgTargetMasterView.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.CfgTargetMasterView.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.CfgTargetMasterView.rangeSize}"
+                          filterModel="#{bindings.CfgTargetMasterViewCriteriaQuery.queryDescriptor}" queryListener="#{bindings.CfgTargetMasterViewCriteriaQuery.processQuery}"
+                          varStatus="vs" id="t1" columnStretching="multiple"
+                          partialTriggers="::ci1:customCrIns ::cb1:custSaveBtn ::rb1:dc_b2 ::rb1:dc_b3"
+                          editingMode="clickToEdit">
+                    <af:column id="c4" headerText="#{pharmauiBundle.DETAILS}" align="center" width="10%">
+                        <af:link id="l1" icon="/icons/audit24.png" action="edit"
+                                 rendered="#{row.row.entities[0].entityState ==1}"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.CfgTargetMasterView.hints.TrxDate.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.CfgTargetMasterView.hints.TrxDate.label}" id="c1"
+                               width="30%" align="center">
+                        <f:facet name="filter">
+                            <af:inputDate value="#{bindings.CfgTargetMasterViewCriteriaQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.TrxDate.value}"
+                                          id="id1">
+                                <af:convertDateTime pattern="#{bindings.CfgTargetMasterView.hints.TrxDate.format}"/>
+                            </af:inputDate>
+                        </f:facet>
+                        <af:inputDate value="#{row.bindings.TrxDate.inputValue}"
+                                      label="#{bindings.CfgTargetMasterView.hints.TrxDate.label}"
+                                      required="#{bindings.CfgTargetMasterView.hints.TrxDate.mandatory}"
+                                      columns="#{bindings.CfgTargetMasterView.hints.TrxDate.displayWidth}"
+                                      shortDesc="#{bindings.CfgTargetMasterView.hints.TrxDate.tooltip}" id="id2"
+                                      contentStyle="text-align:center;">
+                            <f:validator binding="#{row.bindings.TrxDate.validator}"/>
+                            <af:convertDateTime pattern="#{bindings.CfgTargetMasterView.hints.TrxDate.format}"/>
+                        </af:inputDate>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.CfgTargetMasterView.hints.TrgYear.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.CfgTargetMasterView.hints.TrgYear.label}" id="c2"
+                               width="30%" align="center">
+                        <af:inputText value="#{row.bindings.TrgYear.inputValue}"
+                                      label="#{bindings.CfgTargetMasterView.hints.TrgYear.label}"
+                                      required="#{bindings.CfgTargetMasterView.hints.TrgYear.mandatory}"
+                                      columns="#{bindings.CfgTargetMasterView.hints.TrgYear.displayWidth}"
+                                      maximumLength="#{bindings.CfgTargetMasterView.hints.TrgYear.precision}"
+                                      shortDesc="#{bindings.CfgTargetMasterView.hints.TrgYear.tooltip}" id="it1"
+                                      contentStyle="text-align:center;">
+                            <f:validator binding="#{row.bindings.TrgYear.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.CfgTargetMasterView.hints.TrgYear.format}"/>
+                        </af:inputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.CfgTargetMasterView.hints.TrgMonth.name}" filterable="true"
+                               sortable="true" headerText="#{bindings.CfgTargetMasterView.hints.TrgMonth.label}"
+                               id="c3" width="30%" align="center">
+                        <af:selectOneChoice value="#{row.bindings.TrgMonth.inputValue}"
+                                            label="#{row.bindings.TrgMonth.label}"
+                                            required="#{bindings.CfgTargetMasterView.hints.TrgMonth.mandatory}"
+                                            shortDesc="#{bindings.CfgTargetMasterView.hints.TrgMonth.tooltip}"
+                                            id="soc1">
+                            <f:selectItems value="#{row.bindings.TrgMonth.items}" id="si1"/>
+                            <f:validator binding="#{row.bindings.TrgMonth.validator}"/>
+                        </af:selectOneChoice>
+                    </af:column>
+                    <af:column id="c5" align="center" width="10%" headerText="#{pharmauiBundle.DELETE}">
+                        <hmsa:deletePopup id="dp1" commitAfterDelete="false"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+        </f:facet>
+        <f:facet name="ToolbarButton"/>
+        <f:facet name="Popup"/>
+        <f:attribute name="pageDefinitionName" value="com_hmsa_pharma_view_targetSearchPageDef"/>
+    </af:pageTemplate>
+</ui:composition>

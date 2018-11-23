@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="custSectionsTF">
+    <template-reference>
+      <document>/WEB-INF/templates/checkpointTaskflowsTemplate.xml</document>
+      <id>checkpointTaskflowsTemplate</id>
+    </template-reference>
+    <default-activity>custSections</default-activity>
+    <data-control-scope>
+      <isolated/>
+    </data-control-scope>
+    <view id="custSections">
+      <page>/fragments/pharma/lookups/custSections.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

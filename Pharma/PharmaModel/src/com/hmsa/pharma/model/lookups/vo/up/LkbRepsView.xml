@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LkbRepsView"
-  Version="12.2.1.9.14"
+  Version="12.2.1.12.24"
   InheritPersonalization="merge"
   SelectListFlags="1"
   FromListFlags="1"
@@ -12,7 +12,62 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  PageIterMode="Full">
+  PageIterMode="Full"
+  RowClass="com.hmsa.checkpoint.basic.classes.CheckpointViewRowImpl"
+  ComponentClass="com.hmsa.checkpoint.basic.classes.CheckpointViewObjectImpl"
+  DefClass="com.hmsa.checkpoint.basic.classes.CheckpointViewDefImpl">
+  <ViewAccessor
+    Name="LkbJobTitlesROView1"
+    ViewObjectName="com.hmsa.pharma.model.lookups.vo.ro.LkbJobTitlesROView"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LkbManagersROView1"
+    ViewObjectName="com.hmsa.pharma.model.lookups.vo.ro.LkbManagersROView"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="bindRepId">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[RepId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_RepTitleId"
+    ListVOName="LkbJobTitlesROView1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="RepTitleId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="TitleId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="TitleName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ManagerId"
+    ListVOName="LkbManagersROView1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ManagerId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="RepId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="RepName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="LkbReps"
     Entity="com.hmsa.pharma.model.lookups.eo.LkbReps"/>
@@ -22,7 +77,8 @@
     PrecisionRule="true"
     EntityAttrName="RepId"
     EntityUsage="LkbReps"
-    AliasName="REP_ID"/>
+    AliasName="REP_ID"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="RepCode"
     PrecisionRule="true"
@@ -41,13 +97,29 @@
     PrecisionRule="true"
     EntityAttrName="RepTitleId"
     EntityUsage="LkbReps"
-    AliasName="REP_TITLE_ID"/>
+    AliasName="REP_TITLE_ID"
+    LOVName="LOV_RepTitleId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="ManagerId"
     PrecisionRule="true"
     EntityAttrName="ManagerId"
     EntityUsage="LkbReps"
-    AliasName="MANAGER_ID"/>
+    AliasName="MANAGER_ID"
+    LOVName="LOV_ManagerId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreateDate"
     PrecisionRule="true"
@@ -75,6 +147,16 @@
   <ViewLinkAccessor
     Name="LkbRepsView"
     ViewLink="com.hmsa.pharma.model.lookups.vo.up.links.LkbRepsR02Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="RepsCustomersROView"
+    ViewLink="com.hmsa.pharma.model.rtn.vo.ro.links.LkbRepsCustCustomersViewLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="RepsItemsROView"
+    ViewLink="com.hmsa.pharma.model.rtn.vo.ro.links.LkbRepsItemsItemsViewLink"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
 </ViewObject>

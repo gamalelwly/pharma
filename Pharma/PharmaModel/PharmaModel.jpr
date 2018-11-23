@@ -86,6 +86,17 @@
          <string v="XML"/>
       </list>
    </hash>
+   <value n="oracle.jbo.extends.appModule" v="com.hmsa.checkpoint.basic.classes.CheckpointApplicationModuleImpl"/>
+   <value n="oracle.jbo.extends.appModuleDef" v="com.hmsa.checkpoint.basic.classes.CheckpointApplicationModuleDefImpl"/>
+   <value n="oracle.jbo.extends.entityColl" v="com.hmsa.checkpoint.basic.classes.CheckpointEntityCache"/>
+   <value n="oracle.jbo.extends.entityDef" v="com.hmsa.checkpoint.basic.classes.CheckpointEntityDefImpl"/>
+   <value n="oracle.jbo.extends.entityRow" v="com.hmsa.checkpoint.basic.classes.CheckpointEntityImpl"/>
+   <value n="oracle.jbo.extends.progEntityRow" v="com.hmsa.checkpoint.basic.classes.CheckpointProgrammaticEntityImpl"/>
+   <value n="oracle.jbo.extends.progViewObj" v="com.hmsa.checkpoint.basic.classes.CheckpointProgrammaticViewObjectImpl"/>
+   <value n="oracle.jbo.extends.progViewRow" v="com.hmsa.checkpoint.basic.classes.CheckpointProgrammaticViewRowImpl"/>
+   <value n="oracle.jbo.extends.viewDef" v="com.hmsa.checkpoint.basic.classes.CheckpointViewDefImpl"/>
+   <value n="oracle.jbo.extends.viewObj" v="com.hmsa.checkpoint.basic.classes.CheckpointViewObjectImpl"/>
+   <value n="oracle.jbo.extends.viewRow" v="com.hmsa.checkpoint.basic.classes.CheckpointViewRowImpl"/>
    <value n="oracle.jbo.SavedPreferences" v="true"/>
    <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
       <list n="copyRes">
