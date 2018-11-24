@@ -3,9 +3,12 @@ package com.hmsa.pharma.view.beans;
 import com.hmsa.checkpoint.view.utils.JSFUtils;
 import com.hmsa.checkpoint.view.utils.UserInfo;
 
+import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import oracle.adf.view.rich.component.rich.nav.RichLink;
@@ -81,5 +84,33 @@ public class PharmaLauncherBean {
 
     public String setFilesPathAction() {
         return null;
+    }
+
+    public void openPeriodicaDuesReport(ActionEvent actionEvent) {
+        System.out.println("redirecting to the report servlet...");
+
+        try {
+            String contextNameIn = FacesContext.getCurrentInstance()
+                        .getExternalContext().getApplicationContextPath();
+            Map<String, Object> map = FacesContext.getCurrentInstance()
+                                                  .getExternalContext()
+                                                  .getSessionMap();
+            
+//            Map param = new HashMap();
+//        //            param.put("fromDateParam", "");
+//        //            param.put("toDateParam", "");
+//        //            param.put("repIds", "1,2,3");
+//            
+//            map.put("reportPath", "Z:\\Reports\\CustPeriodicalDues_en.jasper");
+//            map.put("repParams", param);
+//            map.put("dataSource", "pharmaDS");
+            
+            System.out.println(contextNameIn);
+            FacesContext.getCurrentInstance()
+                        .getExternalContext()
+                        .redirect("http://127.0.0.1:7101/reportviewer/jasperservlet?reportPath=Z:\\Reports\\CustPeriodicalDues_en.jasper&dataSource=pharmaDS");
+        } catch (IOException e) {
+        }
+
     }
 }

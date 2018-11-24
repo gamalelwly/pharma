@@ -234,8 +234,8 @@
       </list>
    </hash>
    <hash n="oracle.jdeveloper.model.J2eeSettings">
-      <value n="j2eeWebAppName" v="ADFJasper-ViewController-webapp"/>
-      <value n="j2eeWebContextRoot" v="ADFJasper-ViewController-context-root"/>
+      <value n="j2eeWebAppName" v="reportviewer"/>
+      <value n="j2eeWebContextRoot" v="reportviewer"/>
    </hash>
    <hash n="oracle.jdeveloper.model.PathsConfiguration">
       <hash n="javaContentSet">

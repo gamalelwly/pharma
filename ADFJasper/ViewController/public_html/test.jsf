@@ -5,9 +5,7 @@
         <af:form id="f1">
             <af:panelFormLayout id="pfl1">
                 <f:facet name="footer"/>
-                <af:button text="generate rep" id="b1" action="#{jasperBean.generate_action}"
-                           destination="/jasperservlet"
-                           targetFrame="_blank"/>
+                <af:button text="generate rep" id="b1" action="#{jasperBean.generate_action}"/>
             </af:panelFormLayout>
         </af:form>
     </af:document>

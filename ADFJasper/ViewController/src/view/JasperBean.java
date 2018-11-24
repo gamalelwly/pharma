@@ -1,6 +1,7 @@
 package view;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 import java.sql.Connection;
@@ -18,6 +19,7 @@ import javax.naming.InitialContext;
 import javax.servlet.ServletContext;
 
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import javax.sql.DataSource;
@@ -31,22 +33,51 @@ import net.sf.jasperreports.engine.util.JRLoader;
 
 
 public class JasperBean {
+    private String reportPath;
+    private String currentContext;
+
     public JasperBean() {
     }
 
     public String generate_action() {
         // Add event code here...
-        String repPath = "TargetVsAchievedRep.jasper";
-        Map param = new HashMap();
-        param.put("fromDateParam", "");
-        param.put("toDateParam", "");
-        param.put("repIds", "1,2,3");
+//        String repPath = "TargetVsAchievedRep.jasper";
+//        Map param = new HashMap();
+//        param.put("fromDateParam", "");
+//        param.put("toDateParam", "");
+//        param.put("repIds", "1,2,3");
+//
+//        try {
+//            runReport(repPath, param);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        System.out.println("redirecting to the report servlet...");
 
         try {
-            runReport(repPath, param);
-        } catch (Exception e) {
-            e.printStackTrace();
+            String contextNameIn = FacesContext.getCurrentInstance()
+                        .getExternalContext().getApplicationContextPath();
+            Map<String, Object> map = FacesContext.getCurrentInstance()
+                                                  .getExternalContext()
+                                                  .getSessionMap();
+            
+            Map param = new HashMap();
+//            param.put("fromDateParam", "");
+//            param.put("toDateParam", "");
+//            param.put("repIds", "1,2,3");
+            
+            map.put("reportPath", "Z:\\Reports\\CustPeriodicalDues_en.jasper");
+            map.put("repParams", param);
+            map.put("dataSource", "pharmaDS");
+            
+            System.out.println(contextNameIn);
+            FacesContext.getCurrentInstance()
+                        .getExternalContext()
+                        .redirect(contextNameIn+"/jasperservlet?reportPath="+"Z:\\Reports\\CustPeriodicalDues_en.jasper&"+
+                                  "dataSource=pharmaDS");
+        } catch (IOException e) {
         }
+
         return null;
     }
 
@@ -111,5 +142,22 @@ public class JasperBean {
             } catch (Exception e) {
             }
         }
+    }
+
+    public void setReportPath(String reportPath) {
+        this.reportPath = reportPath;
+    }
+
+    public String getReportPath() {
+        return reportPath;
+    }
+
+    public void setCurrentContext(String currentContext) {
+        this.currentContext = currentContext;
+    }
+
+    public String getCurrentContext() {
+//        FacesContext.getCurrentInstance().getExternalContext().
+        return currentContext;
     }
 }

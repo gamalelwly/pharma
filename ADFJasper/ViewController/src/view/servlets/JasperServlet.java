@@ -13,6 +13,8 @@ import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 
+import java.util.Set;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
@@ -38,20 +40,49 @@ public class JasperServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)  {
         Connection conn = null;
-        
+
+//        String sessionPathVar = (String) request.getSession().getAttribute("path");
+//        System.out.println("session var: "+sessionPathVar);
         try {
-            String repPath = "TargetVsAchievedRep.jasper";
+            String reportName = "";
+//                (String) request.getSession()
+//                .getAttribute("reportPath");//"http://127.0.0.1:7101" + request.getContextPath() + "/reports/" + repPath;
+                String dataSourceName = "";
+//                    (String) request.getSession()
+//                    .getAttribute("dataSource");
+            //getServletConfig().getServletContext().getRealPath("/reports/" + repPath)
             Map param = new HashMap();
-            param.put("fromDateParam", "");
-            param.put("toDateParam", "");
-            param.put("repIds", "1,2,3");
+            
+            
+            //load parameters
+            Map<String, String[]> reqMap = request.getParameterMap();
+            Set<String> keySet = reqMap.keySet();
+            
+            for(String key: keySet){
+                String value = reqMap.get(key)[0];
+                if(key.equalsIgnoreCase("reportPath")){
+                    reportName = value;
+                } else if (key.equalsIgnoreCase("dataSource")){
+                    dataSourceName = value;
+                } else {
+                    param.put(key, value);
+                }
+            }
+
+            //            String repPath = "CustPeriodicalDues_en.jasper";
+//            Map param = (Map) request.getSession().getAttribute("repParams");
+//            param.put("fromDateParam", "");
+//            param.put("toDateParam", "");
+//            param.put("repIds", "1,2,3");
 
             response.setHeader("Cache-Control", "max-age=0");
             response.setContentType("application/pdf");
-            String path = "http://127.0.0.1:7101" + request.getContextPath() + "/reports/" + repPath;
             
-            InputStream fs = new FileInputStream(new File(getServletConfig().getServletContext().getRealPath("/reports/" + repPath
-                                                                                                             )));
+            
+//            InputStream fs = new FileInputStream(new File(path));
+//            String repFileName = getServletConfig().getServletContext().getRealPath("/reports") + "/" + reportName;
+//            System.out.println(repFileName);
+            InputStream fs = new FileInputStream(new File(reportName));
             
             ServletOutputStream out = response.getOutputStream();
 //            InputStream fs = new FileInputStream(new File(path));
@@ -59,7 +90,7 @@ public class JasperServlet extends HttpServlet {
             //                                        repPath); //we will put the report under folder "reports" under Web Content
             JasperReport template = (JasperReport) JRLoader.loadObject(fs);
             template.setWhenNoDataType(WhenNoDataTypeEnum.ALL_SECTIONS_NO_DETAIL);
-            conn = getConnection();
+            conn = getConnection(dataSourceName);
             JasperPrint print = JasperFillManager.fillReport(template, param, conn);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             JasperExportManager.exportReportToPdfStream(print, baos);
@@ -97,5 +128,9 @@ public class JasperServlet extends HttpServlet {
     
     private Connection getConnection() throws Exception {
         return getDataSourceConnection("pharmaDS"); // use datasourse in your application
+    }
+    
+    private Connection getConnection(String ds) throws Exception {
+        return getDataSourceConnection(ds); // use datasourse in your application
     }
 }

@@ -131,6 +131,9 @@
                                 <f:attribute name="flowLoc"
                                              value="/WEB-INF/taskflows/pharma/rpt/itemsMinimumAlarmTF.xml#itemsMinimumAlarmTF"/>
                             </af:link>
+                            <af:link text="Periodical Dues Report - Jasper" id="l5"
+                                     actionListener="#{viewScope.pharmaLauncherBean.openPeriodicaDuesReport}"
+                                     targetFrame="_blank"/>
                         </af:panelList>
                     </af:panelGroupLayout>
                 </f:facet>
