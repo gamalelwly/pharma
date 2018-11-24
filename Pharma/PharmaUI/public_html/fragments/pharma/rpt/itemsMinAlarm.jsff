@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelCollection id="pc1">
+    <f:facet name="menus"/>
+    <f:facet name="toolbar"/>
+    <f:facet name="statusbar"/>
+    <af:table value="#{bindings.RptItemsAlarmView.collectionModel}" var="row"
+              rows="#{bindings.RptItemsAlarmView.rangeSize}"
+              emptyText="#{bindings.RptItemsAlarmView.viewable ? 'No data to display.' : 'Access Denied.'}"
+              rowBandingInterval="0" selectedRowKeys="#{bindings.RptItemsAlarmView.collectionModel.selectedRow}"
+              selectionListener="#{bindings.RptItemsAlarmView.collectionModel.makeCurrent}" rowSelection="single"
+              fetchSize="#{bindings.RptItemsAlarmView.rangeSize}"
+              filterModel="#{bindings.RptItemsAlarmViewQuery.queryDescriptor}" filterVisible="true"
+              queryListener="#{bindings.RptItemsAlarmViewQuery.processQuery}" varStatus="vs" id="t1">
+      <af:column sortProperty="#{bindings.RptItemsAlarmView.hints.ItemId.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.RptItemsAlarmView.hints.ItemId.label}" id="c1">
+        <af:outputText value="#{row.ItemId}" shortDesc="#{bindings.RptItemsAlarmView.hints.ItemId.tooltip}" id="ot1">
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.RptItemsAlarmView.hints.ItemId.format}"/>
+        </af:outputText>
+      </af:column>
+      <af:column sortProperty="#{bindings.RptItemsAlarmView.hints.ItemName.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.RptItemsAlarmView.hints.ItemName.label}" id="c2">
+        <af:outputText value="#{row.ItemName}" shortDesc="#{bindings.RptItemsAlarmView.hints.ItemName.tooltip}"
+                       id="ot2"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.RptItemsAlarmView.hints.UnitId.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.RptItemsAlarmView.hints.UnitId.label}" id="c3">
+        <af:outputText value="#{row.UnitId}" shortDesc="#{bindings.RptItemsAlarmView.hints.UnitId.tooltip}" id="ot3">
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.RptItemsAlarmView.hints.UnitId.format}"/>
+        </af:outputText>
+      </af:column>
+      <af:column sortProperty="#{bindings.RptItemsAlarmView.hints.UnitName.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.RptItemsAlarmView.hints.UnitName.label}" id="c4">
+        <af:outputText value="#{row.UnitName}" shortDesc="#{bindings.RptItemsAlarmView.hints.UnitName.tooltip}"
+                       id="ot4"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.RptItemsAlarmView.hints.MinQuant.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.RptItemsAlarmView.hints.MinQuant.label}" id="c5">
+        <af:outputText value="#{row.MinQuant}" shortDesc="#{bindings.RptItemsAlarmView.hints.MinQuant.tooltip}"
+                       id="ot5">
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.RptItemsAlarmView.hints.MinQuant.format}"/>
+        </af:outputText>
+      </af:column>
+      <af:column sortProperty="#{bindings.RptItemsAlarmView.hints.Balance.name}" filterable="true" sortable="true"
+                 headerText="#{bindings.RptItemsAlarmView.hints.Balance.label}" id="c6">
+        <af:outputText value="#{row.Balance}" shortDesc="#{bindings.RptItemsAlarmView.hints.Balance.tooltip}" id="ot6">
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.RptItemsAlarmView.hints.Balance.format}"/>
+        </af:outputText>
+      </af:column>
+    </af:table>
+  </af:panelCollection>
+</ui:composition>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="itemsMinAlarmPageDef"
+                Package="fragments.pharma.rpt">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RptItemsAlarmView" RangeSize="25" DataControl="PharmaAMDataControl"
+              id="RptItemsAlarmViewIterator"/>
+    <searchRegion Binds="RptItemsAlarmViewIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="RptItemsAlarmViewQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RptItemsAlarmViewIterator" id="RptItemsAlarmView">
+      <nodeDefinition DefName="com.hmsa.pharma.model.rpt.ro.RptItemsAlarmView" Name="RptItemsAlarmView0">
+        <AttrNames>
+          <Item Value="ItemId"/>
+          <Item Value="ItemName"/>
+          <Item Value="UnitId"/>
+          <Item Value="UnitName"/>
+          <Item Value="MinQuant"/>
+          <Item Value="Balance"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

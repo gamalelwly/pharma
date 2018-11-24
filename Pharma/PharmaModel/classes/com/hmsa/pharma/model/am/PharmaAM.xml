@@ -104,6 +104,9 @@
             Name="RptCustPeriodicalDuesViewCriteria_Above90"
             FullName="com.hmsa.pharma.model.rpt.ro.RptCustPeriodicalDuesView.RptCustPeriodicalDuesViewCriteria_Above90"/>
     </ViewUsage>
+    <ViewUsage
+        Name="RptItemsAlarmView"
+        ViewObjectName="com.hmsa.pharma.model.rpt.ro.RptItemsAlarmView"/>
     <ViewLinkUsage
       Name="LkbRepsR01Link1"
       ViewLinkObjectName="com.hmsa.pharma.model.lookups.vo.up.links.LkbRepsR01Link"

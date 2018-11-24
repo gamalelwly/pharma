@@ -125,6 +125,12 @@
                                 <f:attribute name="flowLoc"
                                              value="/WEB-INF/taskflows/pharma/rpt/custPeriodicalDuesTF.xml#custPeriodicalDuesTF"/>
                             </af:link>
+                            <af:link text="Items Quantity Alarm" id="l4"
+                                     actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                                <f:attribute name="flowName" value="Items Quantity Alarm"/>
+                                <f:attribute name="flowLoc"
+                                             value="/WEB-INF/taskflows/pharma/rpt/itemsMinimumAlarmTF.xml#itemsMinimumAlarmTF"/>
+                            </af:link>
                         </af:panelList>
                     </af:panelGroupLayout>
                 </f:facet>
@@ -136,6 +142,12 @@
                         <af:spacer width="30" height="10" id="s4"/>
                         <af:spacer width="30" height="10" id="s2"/>
                         <af:inputText label="User Id" id="it1" value="#{userInfo.userId}" autoSubmit="true"/>
+                        <af:link text="Cust Dues Above 90" id="l2"
+                                 actionListener="#{viewScope.pharmaLauncherBean.selectOrCreateNewTab}">
+                            <f:attribute name="flowName" value="Customer Periodical Dues"/>
+                            <f:attribute name="flowLoc"
+                                         value="/WEB-INF/taskflows/pharma/rpt/custPeriodicalDuesTF.xml#custPeriodicalDuesTF"/>
+                        </af:link>
                     </af:panelGroupLayout>
                 </f:facet>
                 <f:facet name="status"/>

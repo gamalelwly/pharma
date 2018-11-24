@@ -30,6 +30,7 @@
     <page path="/fragments/pharma/trx/inventories.jsff" usageId="com_hmsa_pharma_view_inventoriesPageDef"/>
     <page path="/fragments/pharma/rpt/custPeriodicalDues.jsff"
           usageId="com_hmsa_pharma_view_custPeriodicalDuesPageDef"/>
+    <page path="/fragments/pharma/rpt/itemsMinAlarm.jsff" usageId="com_hmsa_pharma_view_itemsMinAlarmPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_hmsa_pharma_view_targetEntryEditPageDef" path="fragments.target.targetEntryEditPageDef"/>
@@ -54,6 +55,7 @@
     <page id="com_hmsa_pharma_view_dailySalesPageDef" path="fragments.pharma.trx.dailySalesPageDef"/>
     <page id="com_hmsa_pharma_view_inventoriesPageDef" path="fragments.pharma.trx.inventoriesPageDef"/>
     <page id="com_hmsa_pharma_view_custPeriodicalDuesPageDef" path="fragments.pharma.rpt.custPeriodicalDuesPageDef"/>
+    <page id="com_hmsa_pharma_view_itemsMinAlarmPageDef" path="fragments.pharma.rpt.itemsMinAlarmPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="PharmaAMDataControl" Package="com.hmsa.pharma.model.am"
